@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jawadbraick.destinygrimoire.Pages"
+    tools:ignore="DuplicateIds"
+    android:background="@color/darkBackground">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:text="Guardian"
+                android:textAlignment="center"
+                android:textColor="@color/lightText"
+                android:textSize="18sp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bottom_guideline"
+                            app:layout_constraintGuide_percent=".955"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/classes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/classes"
+                            android:tag="Classes" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Classes"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintGuide_percent=".955"
+                            android:id="@+id/bottom_guideline"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/races"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/races"
+                            android:tag="Races" />
+
+                        <TextView
+                            android:id="@+id/races_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Races"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bottom_guideline"
+                            app:layout_constraintGuide_percent=".955"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/ghost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/ghost"
+                            android:tag="Ghost" />
+
+                        <TextView
+                            android:id="@+id/ghost_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Ghost"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="7dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bottom_guideline"
+                            app:layout_constraintGuide_percent=".955"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/subclasses"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/subclasses"
+                            android:tag="Sub-Classes" />
+
+                        <TextView
+                            android:id="@+id/subclasses_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Sub-Classes"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bottom_guideline"
+                            app:layout_constraintGuide_percent=".955"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/melee_abilities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/melee_abilities"
+                            android:tag="MeleeAbilities" />
+
+                        <TextView
+                            android:id="@+id/melee_abilities_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Melee Abilities"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bottom_guideline"
+                            app:layout_constraintGuide_percent=".955"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/grenade_abilities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/grenade_abilities"
+                            android:tag="GrenadeAbilities" />
+
+                        <TextView
+                            android:id="@+id/grenade_abilities_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Grenade Abilities"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="7dp">
+
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bottom_guideline"
+                            app:layout_constraintGuide_percent=".955"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/movement_modes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/movement_modes"
+                            android:tag="MovementModes" />
+
+                        <TextView
+                            android:id="@+id/movement_modes_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Movement Modes"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp">
+
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/left_guideline"
+                            app:layout_constraintGuide_percent=".049"
+                            android:orientation="vertical"/>
+                        <android.support.constraint.Guideline
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintGuide_percent=".955"
+                            android:id="@+id/bottom_guideline"
+                            android:orientation="horizontal"/>
+
+                        <ImageButton
+                            android:id="@+id/super_abilities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/super_abilities" />
+
+                        <TextView
+                            android:id="@+id/super_abilities_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Super Abilities"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"/>
+                    </android.support.constraint.ConstraintLayout>
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

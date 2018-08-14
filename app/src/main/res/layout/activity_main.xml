@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBackground"
+    android:clickable="true"
+    android:visibility="visible"
+    tools:context="jawadbraick.destinygrimoire.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/grimoireTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Grimoire"
+        android:textColor="@color/lightText"
+        android:textSize="80sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destinyTitle" />
+
+    <TextView
+        android:id="@+id/destinyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destiny"
+        android:textColor="@color/lightText"
+        android:textSize="80sp"
+        app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@color/lightText"
+        android:ems="10"
+        android:hint=" Username"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destinyTitle" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="20dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username">
+
+        <ImageButton
+            android:id="@+id/psButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/darkBackground"
+            android:baselineAlignBottom="true"
+            android:cropToPadding="true"
+            android:onClick="login"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ps_logo" />
+
+        <ImageButton
+            android:id="@+id/xboxButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/darkBackground"
+            android:baselineAlignBottom="true"
+            android:cropToPadding="true"
+            android:fitsSystemWindows="false"
+            android:onClick="login"
+            android:scaleType="centerCrop"
+            android:src="@drawable/xbox_logo" />
+    </LinearLayout>
+
+    <!--<EditText-->
+        <!--android:id="@+id/username"-->
+        <!--android:layout_width="131dp"-->
+        <!--android:layout_height="103dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:onClick="openGrimoire"-->
+        <!--android:text=""-->
+        <!--android:visibility="visible"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/gimoireTitle"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.501"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/destinyTitle"-->
+        <!--app:layout_constraintVertical_bias="0.666" />-->
+
+</android.support.constraint.ConstraintLayout>

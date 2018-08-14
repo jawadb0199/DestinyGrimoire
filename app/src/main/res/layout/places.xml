@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBackground"
+    tools:context="jawadbraick.destinygrimoire.Pages">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:text="Places"
+                android:textAlignment="center"
+                android:textColor="@color/lightText"
+                android:textSize="18sp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="4dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/mercury_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/mercury_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/mercury"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/mercury"
+                            android:tag="Mercury" />
+
+                        <TextView
+                            android:id="@+id/mercury_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Mercury"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/mercury_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/mercury_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/venus_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/venus_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/venus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/venus"
+                            android:tag="Venus" />
+
+                        <TextView
+                            android:id="@+id/venus_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Venus"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/venus_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/venus_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/earth_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/earth_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/earth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/earth"
+                            android:tag="Earth" />
+
+                        <TextView
+                            android:id="@+id/earth_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Earth"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/earth_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/earth_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="7dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="4dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/the_city_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/the_city_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/the_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/the_city"
+                            android:tag="TheCity" />
+
+                        <TextView
+                            android:id="@+id/the_city_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="The City"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/the_city_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/the_city_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/moon_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/moon_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/moon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/moon"
+                            android:tag="Moon" />
+
+                        <TextView
+                            android:id="@+id/moon_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Moon"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/moon_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/moon_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/mars_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/mars_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/mars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/mars"
+                            android:tag="Mars" />
+
+                        <TextView
+                            android:id="@+id/mars_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Mars"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/mars_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/mars_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="7dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="4dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/the_asteroid_belt_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/the_asteroid_belt_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/the_asteroid_belt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/the_asteroid_belt"
+                            android:tag="TheAsteroidBelt" />
+
+                        <TextView
+                            android:id="@+id/the_asteroid_belt_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="The Asteroid Belt"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/the_asteroid_belt_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/the_asteroid_belt_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/jupiter_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/jupiter_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/jupiter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/jupiter"
+                            android:tag="Jupiter" />
+
+                        <TextView
+                            android:id="@+id/jupiter_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Jupiter"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/jupiter_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/jupiter_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp">
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/saturn_left_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".049" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/saturn_bottom_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent=".955" />
+
+                        <ImageButton
+                            android:id="@+id/saturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:scaleType="fitCenter"
+                            android:onClick="openCards"
+                            android:src="@drawable/saturn"
+                            android:tag="Saturn" />
+
+                        <TextView
+                            android:id="@+id/saturn_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:singleLine="true"
+                            android:text="Saturn"
+                            android:textAlignment="center"
+                            android:textColor="@color/lightText"
+                            android:textSize="9sp"
+                            app:layout_constraintBottom_toBottomOf="@id/saturn_bottom_guideline"
+                            app:layout_constraintLeft_toLeftOf="@id/saturn_left_guideline" />
+                    </android.support.constraint.ConstraintLayout>
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
