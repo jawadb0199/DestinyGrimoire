@@ -413,7 +413,8 @@
                             android:cropToPadding="false"
                             android:scaleType="fitCenter"
                             android:onClick="openCards"
-                            android:src="@drawable/super_abilities" />
+                            android:src="@drawable/super_abilities"
+                            android:tag="SuperAbilities"/>
 
                         <TextView
                             android:id="@+id/super_abilities_text"

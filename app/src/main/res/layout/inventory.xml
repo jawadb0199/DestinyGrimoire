@@ -266,7 +266,7 @@
                             android:scaleType="fitCenter"
                             android:onClick="openCards"
                             android:src="@drawable/guardian_vehicles"
-                            android:tag="Guardian" />
+                            android:tag="GuardianVehicles" />
 
                         <TextView
                             android:id="@+id/guardian_vehicles_text"
@@ -330,7 +330,7 @@
                             app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"/>
                     </android.support.constraint.ConstraintLayout>
 
-                </TableRow>2
+                </TableRow>
 
             </TableLayout>
         </LinearLayout>

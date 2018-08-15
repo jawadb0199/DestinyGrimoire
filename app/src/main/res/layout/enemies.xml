@@ -371,7 +371,7 @@
                             android:scaleType="fitCenter"
                             android:onClick="openCards"
                             android:src="@drawable/exalted_hive"
-                            android:tag="ExaltedHIve" />
+                            android:tag="ExaltedHive" />
 
                         <TextView
                             android:id="@+id/exalted_hive_text"
