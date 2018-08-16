@@ -12,257 +12,322 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:shrinkColumns="*"
-            android:stretchColumns="*">
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="5dp">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="7dp">
-
-
-                    <ImageButton
-                        android:id="@+id/guardian"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@color/darkBackground"
-                        android:cropToPadding="false"
-                        android:onClick="openPages"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/guardian"
-                        android:tag="guardian" />
-
-                    <TextView
-                        android:id="@+id/guardianText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/guardian"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="false"
-                        android:layout_centerVertical="false"
-                        android:layout_marginBottom="11dp"
-                        android:layout_weight="1"
-                        android:fontFamily="serif"
-                        android:singleLine="true"
-                        android:text="Guardian"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkText"
-                        android:textSize="13sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="7dp">
-
-                    <ImageButton
-                        android:id="@+id/inventory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:background="@color/darkBackground"
-                        android:cropToPadding="false"
-                        android:onClick="openPages"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/guardian"
-                        android:tag="inventory" />
-
-                    <TextView
-                        android:id="@+id/inventoryText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/inventory"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="false"
-                        android:layout_centerVertical="false"
-                        android:layout_marginBottom="11dp"
-                        android:layout_weight="1"
-                        android:fontFamily="serif"
-                        android:singleLine="true"
-                        android:text="Inventory"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkText"
-                        android:textSize="13sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="7dp">
-
-
-                    <ImageButton
-                        android:id="@+id/allies"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@color/darkBackground"
-                        android:cropToPadding="false"
-                        android:onClick="openPages"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/allies"
-                        android:tag="allies" />
-
-                    <TextView
-                        android:id="@+id/alliesText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/allies"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="false"
-                        android:layout_centerVertical="false"
-                        android:layout_marginBottom="11dp"
-                        android:layout_weight="1"
-                        android:fontFamily="serif"
-                        android:singleLine="true"
-                        android:text="Allies"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkText"
-                        android:textSize="13sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="7dp">
-
-                    <ImageButton
-                        android:id="@+id/enemies"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:background="@color/darkBackground"
-                        android:cropToPadding="false"
-                        android:onClick="openPages"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/enemies"
-                        android:tag="enemies" />
-
-                    <TextView
-                        android:id="@+id/enemiesText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/enemies"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="false"
-                        android:layout_centerVertical="false"
-                        android:layout_marginBottom="11dp"
-                        android:layout_weight="1"
-                        android:fontFamily="serif"
-                        android:singleLine="true"
-                        android:text="Enemies"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkText"
-                        android:textSize="13sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="7dp">
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="22sp"
+                    android:layout_weight="3"
+                    android:visibility="invisible"/>
 
+                <TextView
+                    android:id="@+id/label"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="Themes"
+                    android:layout_weight="4"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightText"
+                    android:textSize="22sp" />
 
-                    <ImageButton
-                        android:id="@+id/places"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@color/darkBackground"
-                        android:cropToPadding="false"
-                        android:onClick="openPages"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/places"
-                        android:tag="places" />
-
-                    <TextView
-                        android:id="@+id/placesText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/places"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="false"
-                        android:layout_centerVertical="false"
-                        android:layout_marginBottom="11dp"
-                        android:layout_weight="1"
-                        android:fontFamily="serif"
-                        android:singleLine="true"
-                        android:text="Places"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkText"
-                        android:textSize="13sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="7dp">
-
-                    <ImageButton
-                        android:id="@+id/activities"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:background="@color/darkBackground"
-                        android:cropToPadding="false"
-                        android:onClick="openPages"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/guardian"
-                        android:tag="activities" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3">
 
                     <TextView
-                        android:id="@+id/activitiesText"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/score"
+                        android:layout_width="0px"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/activities"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="false"
-                        android:layout_centerVertical="false"
-                        android:layout_marginBottom="11dp"
-                        android:layout_weight="1"
-                        android:fontFamily="serif"
-                        android:singleLine="true"
-                        android:text="Activites"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkText"
-                        android:textSize="13sp"
-                        android:textStyle="italic" />
-                </RelativeLayout>
-            </TableRow>
+                        android:layout_marginEnd="4dp"
+                        android:paddingRight="0dp"
+                        android:text="5615"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/lightText"
+                        android:textSize="22sp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView" />
 
-        </TableLayout>
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/grimoire_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="7dp">
+
+
+                        <ImageButton
+                            android:id="@+id/guardian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:onClick="openPages"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/guardian"
+                            android:tag="guardian" />
+
+                        <TextView
+                            android:id="@+id/guardianText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/guardian"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginBottom="11dp"
+                            android:layout_weight="1"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:text="Guardian"
+                            android:textAlignment="center"
+                            android:textColor="@color/darkText"
+                            android:textSize="13sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp">
+
+                        <ImageButton
+                            android:id="@+id/inventory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:onClick="openPages"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/guardian"
+                            android:tag="inventory" />
+
+                        <TextView
+                            android:id="@+id/inventoryText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/inventory"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginBottom="11dp"
+                            android:layout_weight="1"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:text="Inventory"
+                            android:textAlignment="center"
+                            android:textColor="@color/darkText"
+                            android:textSize="13sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="7dp">
+
+
+                        <ImageButton
+                            android:id="@+id/allies"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:onClick="openPages"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/allies"
+                            android:tag="allies" />
+
+                        <TextView
+                            android:id="@+id/alliesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/allies"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginBottom="11dp"
+                            android:layout_weight="1"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:text="Allies"
+                            android:textAlignment="center"
+                            android:textColor="@color/darkText"
+                            android:textSize="13sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp">
+
+                        <ImageButton
+                            android:id="@+id/enemies"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:onClick="openPages"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/enemies"
+                            android:tag="enemies" />
+
+                        <TextView
+                            android:id="@+id/enemiesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/enemies"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginBottom="11dp"
+                            android:layout_weight="1"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:text="Enemies"
+                            android:textAlignment="center"
+                            android:textColor="@color/darkText"
+                            android:textSize="13sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="7dp">
+
+
+                        <ImageButton
+                            android:id="@+id/places"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:onClick="openPages"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/places"
+                            android:tag="places" />
+
+                        <TextView
+                            android:id="@+id/placesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/places"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginBottom="11dp"
+                            android:layout_weight="1"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:text="Places"
+                            android:textAlignment="center"
+                            android:textColor="@color/darkText"
+                            android:textSize="13sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp">
+
+                        <ImageButton
+                            android:id="@+id/activities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:background="@color/darkBackground"
+                            android:cropToPadding="false"
+                            android:onClick="openPages"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/guardian"
+                            android:tag="activities" />
+
+                        <TextView
+                            android:id="@+id/activitiesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/activities"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="false"
+                            android:layout_centerVertical="false"
+                            android:layout_marginBottom="11dp"
+                            android:layout_weight="1"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:text="Activites"
+                            android:textAlignment="center"
+                            android:textColor="@color/darkText"
+                            android:textSize="13sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
     </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout
     >

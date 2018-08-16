@@ -15,26 +15,73 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="5dp">
 
-            <TextView
-                android:id="@+id/label"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:fontFamily="sans-serif"
-                android:text="Places"
-                android:textAlignment="center"
-                android:textColor="@color/lightText"
-                android:textSize="18sp" />
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginBottom="2dp">
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="22sp"
+                    android:layout_weight="3"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/label"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="Places"
+                    android:layout_weight="4"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightText"
+                    android:textSize="22sp" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:id="@+id/score"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:paddingRight="0dp"
+                        android:text="5615"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/lightText"
+                        android:textSize="22sp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/grimoire_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+
+            </LinearLayout>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="5dp"
                 android:shrinkColumns="*"
                 android:stretchColumns="*">
 
