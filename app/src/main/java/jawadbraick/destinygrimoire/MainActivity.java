@@ -6,14 +6,18 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.MalformedJsonException;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -32,7 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void login(View view){
-        String username = ((EditText)this.findViewById(R.id.username)).getText().toString();
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+        EditText usernameText = (EditText) findViewById(R.id.username);
+        String username = usernameText.getText().toString();
+        usernameText.getText().clear();
         SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", username);
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected JsonObject doInBackground(String... url){
-            try{
+            try {
                 URL obj = new URL(url[0]);
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
                 con.setRequestMethod("GET");
@@ -82,27 +91,25 @@ public class MainActivity extends AppCompatActivity {
                 JsonObject json = (JsonObject) (new JsonParser().parse(response));
 
                 return json;
-
-            } catch (IllegalStateException i) {
-                return null;
-            } catch (NullPointerException n){
-                return null;
             } catch (Exception e){
                 e.printStackTrace();
+                return null;
             }
-            return null;
         }
         @Override
         protected void onPostExecute(JsonObject json){
-            if (json.get("Response").toString().equals("0")){
+            if (json == null || !(json.get("ErrorCode").toString().equals("1"))){
+                Toast.makeText(MainActivity.this, "Incorrect Username or Platform", Toast.LENGTH_LONG).show();
                 return;
             }
+
             String memberId = json.get("Response").toString().replace("\"", "");
             SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
-            int platform = sharedPreferences.getInt("platform", 2);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("memberId", memberId);
             editor.commit();
+
+            int platform = sharedPreferences.getInt("platform", 2);
             new CardCollectionTask().execute("https://www.bungie.net/d1/platform/Destiny/Vanguard/Grimoire/" + platform + "/" + memberId + "/");
         }
 
@@ -135,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 return json;
             } catch (Exception e){
                 e.printStackTrace();
+                return null;
             }
-            return null;
         }
         @Override
         protected void onPostExecute(JsonObject j){
