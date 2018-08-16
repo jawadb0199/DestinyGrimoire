@@ -2,10 +2,12 @@ package jawadbraick.destinygrimoire;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class Pages extends AppCompatActivity{
 
@@ -16,6 +18,11 @@ public class Pages extends AppCompatActivity{
         String themeTag = getIntent().getStringExtra("themeTag");
         int themeLayoutId = getResources().getIdentifier(themeTag, "layout", getPackageName());
         setContentView(themeLayoutId);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+
+        TextView scoreText = findViewById(R.id.score);
+        scoreText.setText(sharedPreferences.getString("score", ""));
     }
 
     public void openCards(View view){

@@ -2,16 +2,23 @@ package jawadbraick.destinygrimoire;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -39,7 +46,18 @@ public class Cards extends AppCompatActivity{
 //        String pageName = getIntent().getStringExtra("pageId").toLowerCase();
         String pageName = "ExaltedHive";
         pageName = pageName.charAt(0) + pageName.substring(1).replace("[A-Z]", " ");
-        gridView.addHeaderView(createTextViewHeader(pageName));
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        LinearLayout header = (LinearLayout) inflater.inflate(R.layout.gridview_header, null);
+
+        TextView label = (TextView) header.getChildAt(1);
+        label.setText(pageName);
+
+        TextView score = (TextView) ((ViewGroup) header.getChildAt(2)).getChildAt(0);
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+        score.setText(sharedPreferences.getString("score", ""));
+
+        gridView.addHeaderView(header);
         gridView.setAdapter(mAdapter);
 
     }
@@ -48,8 +66,8 @@ public class Cards extends AppCompatActivity{
         grimoire = GrimoireContainer.getObject();
         JsonArray cardCollection = grimoire.getCardCollection();
 
-        CardIdList = new ArrayList<String>();
-        CardNameList = new ArrayList<String>();
+        CardIdList = new ArrayList<>();
+        CardNameList = new ArrayList<>();
 
         for (JsonElement e: cardCollection) {
             JsonObject j = e.getAsJsonObject();

@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
             new MemberIdTask().execute("https://www.bungie.net/platform/Destiny/1/Stats/GetMembershipIdByDisplayName/" + username + "/");
         }
 
-        Intent i = new Intent(MainActivity.this, Themes.class);
-        startActivity(i);
     }
 
     private class MemberIdTask extends AsyncTask<String, String, JsonObject>{
@@ -88,8 +86,11 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
         @Override
-        protected void onPostExecute(JsonObject j){
-            String memberId = j.get("Response").toString().replace("\"", "");
+        protected void onPostExecute(JsonObject json){
+            if (json.get("Response").toString().equals("0")){
+                return;
+            }
+            String memberId = json.get("Response").toString().replace("\"", "");
             SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
             int platform = sharedPreferences.getInt("platform", 2);
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -132,12 +133,17 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(JsonObject j){
-            int score = Integer.parseInt(j.getAsJsonObject("Response").getAsJsonObject("data").get("score").toString());
+            j = j.getAsJsonObject("Response");
+            String score = j.getAsJsonObject("data").get("score").toString();
+
             SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("score", score);
-            editor.putString("userCardCollection", j.getAsJsonObject("Response").toString());
+            editor.putString("score", score);
+            editor.putString("userCardCollection", j.toString());
             editor.commit();
+
+            Intent i = new Intent(MainActivity.this, Themes.class);
+            startActivity(i);
         }
 
     }

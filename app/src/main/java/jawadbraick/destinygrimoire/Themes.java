@@ -1,11 +1,14 @@
 package jawadbraick.destinygrimoire;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -28,6 +31,11 @@ public class Themes extends AppCompatActivity{
         parseGrimoireThread.start();
 
         setContentView(R.layout.activity_themes);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE );
+
+        TextView scoreText = findViewById(R.id.score);
+        scoreText.setText(sharedPreferences.getString("score", ""));
 
     }
 
@@ -57,7 +65,7 @@ public class Themes extends AppCompatActivity{
         @Override
         public void run(){
             String s = "";
-            BufferedReader br = null;
+            BufferedReader br;
             try {
                 Resources res = getResources();
                 InputStreamReader input = new InputStreamReader(res.openRawResource(R.raw.grimoire));
