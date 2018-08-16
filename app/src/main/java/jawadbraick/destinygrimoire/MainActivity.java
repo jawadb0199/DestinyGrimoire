@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", username);
 
-
         if (view.getId() == R.id.psButton){
             editor.putInt("platform", 2);
             editor.commit();
@@ -48,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
             new MemberIdTask().execute("https://www.bungie.net/platform/Destiny/1/Stats/GetMembershipIdByDisplayName/" + username + "/");
         }
 
+    }
+    public void viewGrimoire(View view){
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("score", "");
+        editor.commit();
+
+        startActivity(new Intent(MainActivity.this, Themes.class));
     }
 
     private class MemberIdTask extends AsyncTask<String, String, JsonObject>{

@@ -12,37 +12,25 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/grimoireTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Grimoire"
-        android:textColor="@color/lightText"
-        android:textSize="80sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destinyTitle" />
-
-    <TextView
         android:id="@+id/destinyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="70dp"
         android:text="Destiny"
         android:textColor="@color/lightText"
         android:textSize="80sp"
-        app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
+        app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/lightText"
         android:ems="10"
         android:hint=" Username"
@@ -53,14 +41,17 @@
         app:layout_constraintTop_toBottomOf="@+id/destinyTitle" />
 
     <LinearLayout
+        android:id="@+id/loginButtons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxHeight="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginEnd="110dp"
         android:layout_marginStart="110dp"
         android:layout_marginTop="10dp"
         android:baselineAligned="false"
+        android:maxHeight="20dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username">
@@ -95,23 +86,33 @@
             android:src="@drawable/xbox_logo" />
     </LinearLayout>
 
-    <!--<EditText-->
-        <!--android:id="@+id/username"-->
-        <!--android:layout_width="131dp"-->
-        <!--android:layout_height="103dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:background="@android:color/transparent"-->
-        <!--android:onClick="openGrimoire"-->
-        <!--android:text=""-->
-        <!--android:visibility="visible"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/gimoireTitle"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.501"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/destinyTitle"-->
-        <!--app:layout_constraintVertical_bias="0.666" />-->
+    <TextView
+        android:id="@+id/grimoireTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Grimoire"
+        android:textColor="@color/lightText"
+        android:textSize="80sp"
+        app:layout_constraintBottom_toTopOf="@id/noAccountButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButtons" />
+
+    <Button
+        android:id="@+id/noAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="View Grimoire\nWithout Account"
+        android:onClick="viewGrimoire"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grimoireTitle" />
 
 </android.support.constraint.ConstraintLayout>
