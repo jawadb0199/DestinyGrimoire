@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("score", "");
         editor.commit();
 
+        GrimoireContainer.getObject().setUserCardCollection(null);
+
         startActivity(new Intent(MainActivity.this, Themes.class));
     }
 

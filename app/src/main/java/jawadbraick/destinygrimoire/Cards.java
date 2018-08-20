@@ -43,22 +43,15 @@ public class Cards extends AppCompatActivity{
         cardCollection = grimoire.getCardCollection();
         userCardCollection = grimoire.getUserCardCollection();
 
-        int firstCardId = Integer.parseInt(cardCollection.get(0).getAsJsonObject().get("cardId").toString());
-         userCardCollectionStartIndex = getStartIndex(firstCardId,0, userCardCollection.size()-1);
-
-        createLists();
-
-        mAdapter = new GridViewAdapter(this, getApplicationContext(), userCardIdList, userCardNameList);
-
         // Set custom adapter to gridview
         gridView = (HeaderGridView) findViewById(R.id.gridview);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        LinearLayout header = (LinearLayout) inflater.inflate(R.layout.gridview_header, null);
 
         String pageName = getIntent().getStringExtra("pageTag").toLowerCase();
 //        String pageName = "ExaltedHive";
         pageName = pageName.charAt(0) + pageName.substring(1).replace("[A-Z]", " ");
-
-        LayoutInflater inflater = this.getLayoutInflater();
-        LinearLayout header = (LinearLayout) inflater.inflate(R.layout.gridview_header, null);
 
         TextView label = (TextView) header.getChildAt(1);
         label.setText(pageName);
@@ -67,43 +60,29 @@ public class Cards extends AppCompatActivity{
         SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
         score.setText(sharedPreferences.getString("score", ""));
 
+
+        if (userCardCollection == null){
+            createCardLists();
+            mAdapter = new GridViewAdapter(this, getApplicationContext(), cardIdList, cardNameList);
+            CheckBox toggle = (CheckBox) header.getChildAt(0);
+            toggle.setVisibility(View.INVISIBLE);
+        } else {
+            createUserCardLists();
+            mAdapter = new GridViewAdapter(this, getApplicationContext(), userCardIdList, userCardNameList);
+        }
+
+
         gridView.addHeaderView(header);
         gridView.setAdapter(mAdapter);
 
     }
 
-    private void createLists(){
-        cardCollection = grimoire.getCardCollection();
+    private void createUserCardLists(){
+        int firstCardId = Integer.parseInt(cardCollection.get(0).getAsJsonObject().get("cardId").toString());
+        userCardCollectionStartIndex = getStartIndex(firstCardId,0, userCardCollection.size()-1);
 
         userCardIdList = new ArrayList<>();
         userCardNameList = new ArrayList<>();
-
-//        int grimoireIndex = 0;
-//        int userIndex = userCardCollectionStartIndex;
-//        int lockedCards = 0;
-//        while (grimoireIndex < cardCollection.size()) {
-//            // code for creating lists
-//            JsonObject grimoireCard = cardCollection.get(grimoireIndex).getAsJsonObject();
-//            JsonObject userCard = userCardCollection.get(userIndex).getAsJsonObject();
-//
-//            String grimoireCardId = grimoireCard.get("cardId").getAsString();
-//            String userCardId = userCard.get("cardId").getAsString();
-//
-//            if (userCardId.equals(grimoireCardId)) {
-//                userCardIdList.add(grimoireCardId);
-//                userCardNameList.add(grimoireCard.get("cardName").getAsString());
-//                userIndex++;
-//            } else {
-//                lockedCards++;
-//            }
-//            grimoireIndex++;
-//        }
-//
-//        while (lockedCards > 0) {
-//            userCardIdList.add("grimoire_cover");
-//            userCardNameList.add("");
-//            lockedCards--;
-//        }
         for (int i = 0; i < cardCollection.size(); i++) {
             JsonObject grimoireCard = cardCollection.get(i).getAsJsonObject();
             String grimoireCardId = grimoireCard.get("cardId").getAsString();
@@ -129,18 +108,21 @@ public class Cards extends AppCompatActivity{
         new Thread(new Runnable(){
             @Override
             public void run(){
-                cardIdList = new ArrayList<>();
-                cardNameList = new ArrayList<>();
-
-                for (JsonElement e: cardCollection) {
-                    JsonObject j = e.getAsJsonObject();
-                    cardIdList.add(j.get("cardId").getAsString());
-                    cardNameList.add(j.get("cardName").getAsString());
-                }
+                createCardLists();
             }
         }).start();
     }
 
+    private void createCardLists(){
+        cardIdList = new ArrayList<>();
+        cardNameList = new ArrayList<>();
+
+        for (JsonElement e: cardCollection) {
+            JsonObject j = e.getAsJsonObject();
+            cardIdList.add(j.get("cardId").getAsString());
+            cardNameList.add(j.get("cardName").getAsString());
+        }
+    }
     public void toggleLockedCards(View view){
         CheckBox checkBox = (CheckBox) view;
         if (checkBox.isChecked()){
