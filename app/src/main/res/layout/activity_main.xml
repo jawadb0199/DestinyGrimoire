@@ -8,111 +8,124 @@
     android:background="@color/darkBackground"
     android:clickable="true"
     android:visibility="visible"
-    tools:context="jawadbraick.destinygrimoire.MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context="jawadbraick.destinygrimoire.MainActivity">
 
-    <TextView
-        android:id="@+id/destinyTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="70dp"
-        android:text="Destiny"
-        android:textColor="@color/lightText"
-        android:textSize="80sp"
-        app:layout_constraintBottom_toTopOf="@+id/username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:background="@color/lightText"
-        android:ems="10"
-        android:hint=" Username"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destinyTitle" />
+        <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/loginButtons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="10dp"
-        android:baselineAligned="false"
-        android:maxHeight="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username">
+            <TextView
+                android:id="@+id/destinyTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="8dp"
+                android:text="Destiny"
+                android:textAlignment="center"
+                android:textColor="@color/lightText"
+                android:textSize="80sp"
+                app:layout_constraintBottom_toTopOf="@+id/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.6" />
 
-        <ImageButton
-            android:id="@+id/psButton"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:background="@color/darkBackground"
-            android:baselineAlignBottom="true"
-            android:cropToPadding="true"
-            android:onClick="login"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ps_logo" />
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@color/lightText"
+                android:ems="10"
+                android:hint=" Username"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/destinyTitle" />
 
-        <ImageButton
-            android:id="@+id/xboxButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:background="@color/darkBackground"
-            android:baselineAlignBottom="true"
-            android:cropToPadding="true"
-            android:fitsSystemWindows="false"
-            android:onClick="login"
-            android:scaleType="centerCrop"
-            android:src="@drawable/xbox_logo" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/loginButtons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginEnd="110dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:weightSum="2"
+                android:maxHeight="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username">
 
-    <TextView
-        android:id="@+id/grimoireTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Grimoire"
-        android:textColor="@color/lightText"
-        android:textSize="80sp"
-        app:layout_constraintBottom_toTopOf="@id/noAccountButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButtons" />
+                <ImageButton
+                    android:id="@+id/psButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:background="@color/darkBackground"
+                    android:baselineAlignBottom="true"
+                    android:cropToPadding="true"
+                    android:onClick="login"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ps_logo" />
 
-    <Button
-        android:id="@+id/noAccountButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="View Grimoire\nWithout Account"
-        android:onClick="viewGrimoire"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grimoireTitle" />
+                <ImageButton
+                    android:id="@+id/xboxButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:background="@color/darkBackground"
+                    android:baselineAlignBottom="true"
+                    android:cropToPadding="true"
+                    android:fitsSystemWindows="false"
+                    android:onClick="login"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/xbox_logo" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/grimoireTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Grimoire"
+                android:textAlignment="center"
+                android:textColor="@color/lightText"
+                android:textSize="80sp"
+                app:layout_constraintBottom_toTopOf="@id/noAccountButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginButtons" />
+
+            <Button
+                android:id="@+id/noAccountButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="View Grimoire\nWithout Account"
+                android:onClick="viewGrimoire"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/grimoireTitle" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
