@@ -73,7 +73,11 @@ public class GridViewAdapter extends BaseAdapter{
 
         view.pageText.setText(cardNameList.get(position));
         view.imageButtonPage.setImageResource(getImage(cardIdList.get(position)));
-        view.imageButtonPage.setTag(cardIdList.get(position));
+        if (cardIdList.get(position).equals("grimoire_cover")){
+            view.imageButtonPage.setTag("");
+        } else {
+            view.imageButtonPage.setTag(cardIdList.get(position));
+        }
         Log.d("GRID SOURCE", view.imageButtonPage.getDrawable().toString());
 
         return convertView;

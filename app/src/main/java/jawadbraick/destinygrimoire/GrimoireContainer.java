@@ -12,6 +12,7 @@ public class GrimoireContainer{
     private JsonArray pageCollection;
     private JsonArray cardCollection;
     private JsonObject cardJson;
+    private JsonArray userCardCollection;
     private String theme;
     private String page;
     private String card;
@@ -30,7 +31,27 @@ public class GrimoireContainer{
         return object;
     }
 
+//    Getters
+    public JsonArray getThemeCollection(){
+        return themeCollection;
+    }
 
+    public JsonArray getPageCollection(){
+        return pageCollection;
+    }
+
+    public JsonArray getCardCollection(){
+        return cardCollection;
+    }
+
+    public JsonObject getCardJson(){
+        return cardJson;
+    }
+    public JsonArray getUserCardCollection(){
+        return userCardCollection;
+    }
+
+//    Setters
     public void setTheme(String theme){
         this.theme = theme;
         setPageCollection();
@@ -58,22 +79,10 @@ public class GrimoireContainer{
     private void setCardJson(){
         cardJson = getJsonObjectFromArray(cardCollection, "cardId", card);
     }
-
-    public JsonArray getThemeCollection(){
-        return themeCollection;
+    public void setUserCardCollection(JsonArray userCardCollection){
+        this.userCardCollection = userCardCollection;
     }
 
-    public JsonArray getPageCollection(){
-        return pageCollection;
-    }
-
-    public JsonArray getCardCollection(){
-        return cardCollection;
-    }
-
-    public JsonObject getCardJson(){
-        return cardJson;
-    }
 
     private JsonObject getJsonObjectFromArray(JsonArray array, String key, String value){
         Log.d("JSONARRAY", array.toString());

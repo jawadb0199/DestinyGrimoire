@@ -146,14 +146,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         @Override
-        protected void onPostExecute(JsonObject j){
-            j = j.getAsJsonObject("Response");
-            String score = j.getAsJsonObject("data").get("score").toString();
+        protected void onPostExecute(JsonObject json){
+            json = json.getAsJsonObject("Response").getAsJsonObject("data");
 
+            String score = json.get("score").toString();
             SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
+            GrimoireContainer.getObject().setUserCardCollection(json.getAsJsonArray("cardCollection"));
             editor.putString("score", score);
-            editor.putString("userCardCollection", j.toString());
             editor.commit();
 
             Intent i = new Intent(MainActivity.this, Themes.class);

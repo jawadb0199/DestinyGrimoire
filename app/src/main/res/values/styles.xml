@@ -12,6 +12,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="TextAppearance.Small" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
