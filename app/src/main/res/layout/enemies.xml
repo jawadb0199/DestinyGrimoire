@@ -728,7 +728,7 @@
                             android:layout_weight="1"
                             android:fontFamily="sans-serif"
                             android:singleLine="true"
-                            android:text="The Exo Stranger"
+                            android:text="Cabal Command"
                             android:textAlignment="center"
                             android:textColor="@color/lightText"
                             android:textSize="9sp"
