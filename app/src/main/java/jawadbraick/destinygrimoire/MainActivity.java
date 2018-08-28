@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.MalformedJsonException;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -17,7 +16,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -34,29 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    public void login(View view){
-        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-        EditText usernameText = (EditText) findViewById(R.id.username);
-        String username = usernameText.getText().toString();
-        usernameText.getText().clear();
-        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-
-        if (view.getId() == R.id.psButton){
-            editor.putInt("platform", 2);
-            editor.commit();
-            new MemberIdTask().execute("https://www.bungie.net/platform/Destiny/2/Stats/GetMembershipIdByDisplayName/" + username + "/");
-        } else {
-            editor.putInt("platform", 1);
-            editor.commit();
-            new MemberIdTask().execute("https://www.bungie.net/platform/Destiny/1/Stats/GetMembershipIdByDisplayName/" + username + "/");
-        }
-
-    }
     public void viewGrimoire(View view){
         SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -68,13 +43,46 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, Themes.class));
     }
 
-    private class MemberIdTask extends AsyncTask<String, String, JsonObject>{
+    public void login(View view){
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+        EditText usernameText = (EditText) findViewById(R.id.username);
+        String username = usernameText.getText().toString();
+        usernameText.getText().clear();
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if (view.getId() == R.id.psButton){
+            new loginTask().execute(new AsyncTaskWrapper(username, 2));
+            editor.putInt("platform", 2);
+            editor.commit();
+        } else {
+            new loginTask().execute(new AsyncTaskWrapper(username, 1));
+            editor.putInt("platform", 1);
+            editor.commit();
+        }
+        editor.putString("username", username);
+        editor.commit();
+
+    }
+
+    private class AsyncTaskWrapper{
+        String username;
+        int platform;
+        public AsyncTaskWrapper(String username, int platform){
+            this.username = username;
+            this.platform = platform;
+        }
+    }
+
+    private class loginTask extends AsyncTask<AsyncTaskWrapper, AsyncTaskWrapper, JsonObject>{
 
         @Override
-        protected JsonObject doInBackground(String... url){
+        protected JsonObject doInBackground(AsyncTaskWrapper... wrapper){
             try {
-                URL obj = new URL(url[0]);
-                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+                URL url = new URL("https://www.bungie.net/platform/Destiny/"+ wrapper[0].platform +"/Stats/GetMembershipIdByDisplayName/" + wrapper[0].username + "/");
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
                 con.setRequestProperty("x-api-key", API_KEY);
 
@@ -82,15 +90,43 @@ public class MainActivity extends AppCompatActivity {
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 String inputLine;
-                String response = "";
+                StringBuilder response = new StringBuilder();
 
                 while ((inputLine = in.readLine()) != null) {
-                    response += inputLine;
+                    response.append(inputLine);
                 }
 
                 in.close();
 
-                JsonObject json = (JsonObject) (new JsonParser().parse(response));
+                JsonParser parser = new JsonParser();
+                JsonObject json = (JsonObject) (parser.parse(response.toString()));
+
+                String memberId = json.get("Response").toString().replace("\"", "");
+                SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("memberId", memberId);
+                editor.commit();
+
+
+
+                url = new URL("https://www.bungie.net/d1/platform/Destiny/Vanguard/Grimoire/" + wrapper[0].platform + "/" + memberId + "/" );
+                con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.setRequestProperty("x-api-key", API_KEY);
+
+                responseCode = con.getResponseCode();
+
+                in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                in.close();
+
+                json = (JsonObject) (parser.parse(response.toString()));
 
                 return json;
             } catch (Exception e){
@@ -105,53 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            String memberId = json.get("Response").toString().replace("\"", "");
-            SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("memberId", memberId);
-            editor.commit();
-
-            int platform = sharedPreferences.getInt("platform", 2);
-            new CardCollectionTask().execute("https://www.bungie.net/d1/platform/Destiny/Vanguard/Grimoire/" + platform + "/" + memberId + "/");
-        }
-
-    }
-
-    private class  CardCollectionTask extends AsyncTask<String, String, JsonObject>{
-        @Override
-        protected JsonObject doInBackground(String... url){
-            try{
-                URL obj = new URL(url[0]);
-                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-                con.setRequestMethod("GET");
-                con.setRequestProperty("x-api-key", API_KEY);
-
-                int responseCode = con.getResponseCode();
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                String response = "";
-
-                while ((inputLine = in.readLine()) != null) {
-                    response += inputLine;
-                }
-
-                in.close();
-
-                JsonElement parsed = new JsonParser().parse(response);
-                JsonObject json = parsed.getAsJsonObject();
-
-                return json;
-            } catch (Exception e){
-                e.printStackTrace();
-                return null;
-            }
-        }
-        @Override
-        protected void onPostExecute(JsonObject json){
-            json = json.getAsJsonObject("Response").getAsJsonObject("data");
-
-            String score = json.get("score").toString();
+            String score = json.getAsJsonObject("Response").getAsJsonObject("data").get("score").toString();
             SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             GrimoireContainer.getObject().setUserCardCollection(json.getAsJsonArray("cardCollection"));
@@ -160,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent i = new Intent(MainActivity.this, Themes.class);
             startActivity(i);
+
         }
 
     }
