@@ -26,10 +26,6 @@ public class Themes extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-        parseGrimoireThread = new Thread(new parseGrimoire());
-        parseGrimoireThread.start();
-
         setContentView(R.layout.activity_themes);
 
         SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE );
@@ -42,10 +38,14 @@ public class Themes extends AppCompatActivity{
     public void openPages(View view){
         String theme = capitalize(view.getTag().toString());
 
-        try {
-            parseGrimoireThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        GrimoireContainer grimoire = GrimoireContainer.getObject();
+        while (grimoire.getThemeCollection() == null){
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            grimoire = GrimoireContainer.getObject();
         }
         grimoire.setTheme(theme);
 
@@ -58,37 +58,6 @@ public class Themes extends AppCompatActivity{
 
     private String capitalize(String str){
         return str.substring(0, 1).toUpperCase() + str.substring(1);
-    }
-
-    private class parseGrimoire implements Runnable{
-
-        @Override
-        public void run(){
-            String s = "";
-            BufferedReader br;
-            try {
-                Resources res = getResources();
-                InputStreamReader input = new InputStreamReader(res.openRawResource(R.raw.grimoire));
-                br = new BufferedReader(input);
-                String temp;
-                while ((temp = br.readLine()) != null) {
-                    s += temp;
-                }
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Log.d("GRIMOIRE JSON PARSE", "Pre-Parse");
-
-            JsonObject json = new JsonParser().parse(s).getAsJsonObject();
-            themeCollection = json.getAsJsonObject("Response").getAsJsonArray("themeCollection");
-            Log.d("GRIMOIRE JSON PARSE", "Parce Successful");
-
-            grimoire = GrimoireContainer.getObject();
-            grimoire.setThemeCollection(themeCollection);
-
-            Log.d("GRIMOIRE JSON PARSE", "Waiting for theme selection . . .");
-        }
     }
 
 }
