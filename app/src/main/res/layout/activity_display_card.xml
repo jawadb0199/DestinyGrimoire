@@ -112,7 +112,7 @@
                     android:paddingTop="5dp"
                     android:text="Kranox, the Graven is said to be the Keeper of the Worlds' Grave, a vast repository chronicling the Hive's history of interstellar conquests. Every world they have devoured, every life they have eradicated, every enemy they've faced. \n\nDefeating Kranox and cracking the secrets of the Worlds' Grave could provide the City with the keys to unraveling the Hive's true goals and their ultimate plans for Earth."
                     android:textColor="@color/darkBackground"
-                    android:textSize="21sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
