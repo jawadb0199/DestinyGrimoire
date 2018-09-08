@@ -9,20 +9,22 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingBottom="10dp">
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/cardInfoBlock"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <android.support.constraint.Guideline
                     android:id="@+id/card_image_guideline"
@@ -97,18 +99,14 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardInfoBlock">
+                android:layout_marginBottom="10dp">
 
                 <ImageView
                     android:id="@+id/background"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@drawable/c502060"
+                    android:src="@drawable/c700470"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -118,24 +116,28 @@
                     android:id="@+id/cardDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="1410dp"
-                    android:layout_margin="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
                     android:background="@color/lightBackground"
-                    android:paddingBottom="5dp"
+                    android:minHeight="300dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:paddingTop="5dp"
-                    android:text="Kranox, the Graven is said to be the Keeper of the Worlds' Grave, a vast repository chronicling the Hive's history of interstellar conquests. Every world they have devoured, ever"
+                    android:text="Kranox, the Graven is said to be the Keeper of the Worlds' Grave, a vast repository chronicling the Hive's history of interstellar conquests. Every world they have devoured, every life they have eradicated, every enemy they've faced. \n\nDefeating Kranox and cracking the secrets of the Worlds' Grave could provide the City with the keys to unraveling the Hive's true goals and their ultimate plans for Earth.\n\nKranox, the Graven is said to be the Keeper of the Worlds' Grave, a vast repository chronicling the Hive's history of interstellar conquests. Every world they have devoured, every life they have eradicated, every enemy they've faced. \n\nDefeating Kranox and cracking the secrets of the Worlds' Grave could provide the City with the keys to unraveling the Hive's true goals and their ultimate plans for Earth.\n\nKranox, the Graven is said to be the Keeper of the Worlds' Grave, a vast repository chronicling the Hive's history of interstellar conquests. Every world they have devoured, every life they have eradicated, every enemy they've faced. \n\nDefeating Kranox and cracking the secrets of the Worlds' Grave could provide the City with the keys to unraveling the Hive's true goals and their ultimate plans for Earth."
                     android:textColor="@color/darkBackground"
-                    android:textSize="30sp"
+                    android:textSize="22sp"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="visible"/>
+                    app:layout_constraintVertical_bias="1.0" />
             </android.support.constraint.ConstraintLayout>
 
-        </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
 
     </ScrollView>
 
