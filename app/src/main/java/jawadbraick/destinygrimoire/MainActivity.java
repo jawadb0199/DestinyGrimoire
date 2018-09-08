@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("score", "");
         editor.commit();
 
+
         GrimoireContainer.getObject().setUserCardCollection(null);
 
         startActivity(new Intent(MainActivity.this, Themes.class));
@@ -145,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Incorrect Username or Platform", Toast.LENGTH_LONG).show();
                 return;
             }
-
-            String score = json.getAsJsonObject("Response").getAsJsonObject("data").get("score").toString();
+            json = json.getAsJsonObject("Response").getAsJsonObject("data");
+            String score = json.get("score").toString();
             SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             GrimoireContainer.getObject().setUserCardCollection(json.getAsJsonArray("cardCollection"));
