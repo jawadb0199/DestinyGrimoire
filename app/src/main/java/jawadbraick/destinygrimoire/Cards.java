@@ -13,13 +13,10 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Cards extends AppCompatActivity{
     private GridViewAdapter mAdapter;
@@ -49,9 +46,8 @@ public class Cards extends AppCompatActivity{
         LayoutInflater inflater = this.getLayoutInflater();
         LinearLayout header = (LinearLayout) inflater.inflate(R.layout.gridview_header, null);
 
-        String pageName = getIntent().getStringExtra("pageTag").toLowerCase();
-//        String pageName = "ExaltedHive";
-        pageName = pageName.charAt(0) + pageName.substring(1).replace("[A-Z]", " ");
+        String pageName = getIntent().getStringExtra("pageTag");
+        pageName = pageName.charAt(0) + fromCamelCase(pageName.substring(1));
 
         TextView label = (TextView) header.getChildAt(1);
         label.setText(pageName);
@@ -101,7 +97,6 @@ public class Cards extends AppCompatActivity{
         for (int i = userCardIdList.size(); i < cardCollection.size(); i++) {
             userCardIdList.add("grimoire_cover");
             userCardNameList.add("");
-
         }
 
 
@@ -163,6 +158,21 @@ public class Cards extends AppCompatActivity{
             return 0;
         }
     }
+    private String fromCamelCase(String str){
+        for(int i = 0; i < str.length(); i++){
+            Character letter = str.charAt(i);
+            if (letter >= 'A' && letter <= 'Z'){
+                String letterStr = ""+letter;
+                System.out.print(letterStr);
+                String replace = " " + letterStr;
+                System.out.println(replace);
+                str = str.replace(letterStr, replace);
+                i++;
+            }
+        }
+        return str;
+    }
+
 
 
 }
