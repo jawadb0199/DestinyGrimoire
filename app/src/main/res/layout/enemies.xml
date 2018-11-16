@@ -91,7 +91,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/fallen_left_guideline"
@@ -187,7 +187,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/fallen_leadership_left_guideline"
@@ -241,7 +241,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/fallen_hunted_left_guideline"
@@ -337,7 +337,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/hive_arsenal_left_guideline"
@@ -391,7 +391,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/exalted_hive_left_guideline"
@@ -487,7 +487,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/vex_arsenal_left_guideline"
@@ -541,7 +541,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/vex_axis_minds_left_guideline"
@@ -637,7 +637,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/cabal_arsenal_left_guideline"
@@ -739,8 +739,8 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp">
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/darkness_left_guideline"
@@ -841,7 +841,6 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
@@ -889,7 +888,8 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="3dp">
+                        android:layout_marginRight="2dp"
+                        android:layout_marginLeft="2dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/siva_left_guideline"

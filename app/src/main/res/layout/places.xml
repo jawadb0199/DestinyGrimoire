@@ -92,7 +92,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/mercury_left_guideline"
@@ -188,7 +188,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/earth_left_guideline"
@@ -242,7 +242,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/the_city_left_guideline"
@@ -338,7 +338,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/mars_left_guideline"
@@ -392,7 +392,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp">
+                        android:layout_marginRight="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/the_asteroid_belt_left_guideline"
@@ -488,7 +488,7 @@
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="4dp">
+                        android:layout_marginLeft="3dp">
 
                         <android.support.constraint.Guideline
                             android:id="@+id/saturn_left_guideline"
