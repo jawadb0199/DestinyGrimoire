@@ -14,13 +14,16 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".GrimoireActivity" />
         <activity android:name=".Themes" />
         <activity android:name=".Cards" />
         <activity android:name=".Pages" />
-        <activity android:name=".DisplayCard"/>
+        <activity android:name=".DisplayCard" />
+
     </application>
 
 </manifest>
