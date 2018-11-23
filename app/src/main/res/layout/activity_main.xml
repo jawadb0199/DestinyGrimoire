@@ -19,31 +19,73 @@
             android:id="@+id/headerLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             android:text="Destiny Lore"
             android:textAlignment="center"
             android:textSize="70dp"
             android:textColor="@color/lightText"/>
 
-        <Button
-            android:id="@+id/recordsButton"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@color/darkBackground"
-            android:text="Destiny 2 Lore Triumphs"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"/>
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <Button
+                android:id="@+id/recordsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/darkBackground"
+                android:text="Destiny 2 Lore Triumphs"
+                android:layout_gravity="center"
+                android:layout_marginBottom="23dp"/>
 
-        <Button
-            android:id="@+id/grimorieButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/darkBackground"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:text="Destiny 1 Grimoire Cards"
-            android:onClick="openGrimoire"/>
+            <Button
+                android:id="@+id/grimorieButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/darkBackground"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:text="Destiny 1 Grimoire Cards"
+                android:onClick="openGrimoire"/>
+        </LinearLayout>
+
+
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/recordsButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_alignLeft="@id/grimorieButton"-->
+                <!--android:layout_alignRight="@id/grimorieButton"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:background="@color/darkBackground"-->
+                <!--android:onClick="openRecords"-->
+                <!--android:padding="10dp"-->
+                <!--android:paddingLeft="11dp"-->
+                <!--android:text="Destiny 2 Lore Triumphs"/>-->
+
+            <!--<Button-->
+                <!--android:id="@+id/grimorieButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_alignBaseline="@id/recordsButton"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:background="@color/darkBackground"-->
+                <!--android:onClick="openGrimoire"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="Destiny 1 Grimoire Cards" />-->
+        <!--</RelativeLayout>-->
+
+
 
     </LinearLayout>
 
