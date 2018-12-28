@@ -38,7 +38,8 @@
                 android:background="@color/darkBackground"
                 android:text="Destiny 2 Lore Triumphs"
                 android:layout_gravity="center"
-                android:layout_marginBottom="23dp"/>
+                android:layout_marginBottom="23dp"
+                android:onClick="openRecords"/>
 
             <Button
                 android:id="@+id/grimorieButton"
