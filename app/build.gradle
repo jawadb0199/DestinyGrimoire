@@ -21,7 +21,8 @@ android {
 }
 
 repositories {
-//    jcenter()
+    jcenter()
+    google()
     maven { url "https://jitpack.io" }
 }
 
@@ -39,4 +40,8 @@ dependencies {
     implementation files('libs/jackson-annotations-2.9.6-javadoc')
     implementation files('libs/jackson-databind-2.9.6')
     implementation 'com.github.deano2390:FlowTextView:2.0.5'
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    implementation 'com.github.humazed:RoomAsset:1.0.3'
+
 }
