@@ -32,12 +32,14 @@ public class LoreRecords extends AppCompatActivity{
                          R.drawable.the_man_they_call_cayde,
                          R.drawable.most_loyal,
                          R.drawable.ghost_stories,
-                         R.drawable.evas_journey};
+                         R.drawable.evas_journey,
+                         R.drawable.dawning_delights};
         String[] names = {"The Lawless Frontier",
                           "The Man They Call Cayde",
                           "Most Loyal",
                           "Ghost Stories",
-                          "Eva's Journey"};
+                          "Eva's Journey",
+                          "Dawning Delights"};
 
         ArrayList<RecordInfo> recordInfoList = new ArrayList<>();
         for(int i = 0; i < iconIds.length; i++){
