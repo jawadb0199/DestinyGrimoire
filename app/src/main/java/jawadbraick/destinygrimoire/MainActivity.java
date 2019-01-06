@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity{
     public void openGrimoire(View view){
         startActivity(new Intent(MainActivity.this, GrimoireActivity.class));
     }
-    public void openRecords(View view){
+    public void viewRecords(View view){
         startActivity(new Intent(MainActivity.this, LoreRecords.class));
     }
 
