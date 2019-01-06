@@ -23,7 +23,7 @@
         <activity android:name=".Cards" />
         <activity android:name=".Pages" />
         <activity android:name=".DisplayCard" />
-        <activity android:name=".LoreRecords"></activity>
+        <activity android:name=".LoreRecordsActivity"></activity>
     </application>
 
 </manifest>

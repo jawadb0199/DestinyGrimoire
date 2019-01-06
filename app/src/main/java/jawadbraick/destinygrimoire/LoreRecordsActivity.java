@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class LoreRecords extends AppCompatActivity{
+public class LoreRecordsActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
     private RecordAdapter recordAdapter;
     private ManifestDatabase database;
