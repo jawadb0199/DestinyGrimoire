@@ -1,5 +1,6 @@
 package jawadbraick.destinygrimoire;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,12 +9,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.huma.room_for_asset.RoomAsset;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,9 +60,7 @@ public class LoreRecords extends AppCompatActivity{
 
         ArrayList<RecordInfo> recordInfoList = new ArrayList<>();
         for(int i = 0; i < iconIds.length; i++){
-            RecordInfo current = new RecordInfo();
-            current.iconId = iconIds[i];
-            current.name = names[i];
+            RecordInfo current = new RecordInfo(iconIds[i], names[i]);
             recordInfoList.add(current);
         }
 
@@ -83,6 +80,7 @@ public class LoreRecords extends AppCompatActivity{
         long[] nodes = bookMap.get(name);
 //        long[] nodes = {1582800871L, -1232389968L};
 //        String[] nodeIds = {"'1582800871'", "'-1232389968'"};
+        ArrayList<RecordInfo> recordInfoList = new ArrayList<>();
         ArrayList<Long> nodeId = new ArrayList<>(1);
         nodeId.add(0L);
         Log.i("Theme: ", name);
@@ -93,9 +91,14 @@ public class LoreRecords extends AppCompatActivity{
             List<PresentationNode> list = database.getDao().getPresentationNodeById(nodeId);
             JsonObject json = list.get(0).getJson();
             String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+            if(bookName.equals("Classified")){
+                continue;
+            }
+            int bookImg = getImageResource(bookName);
+            recordInfoList.add(new RecordInfo(bookImg, bookName));
+
             Log.i("Book: ", bookName);
         }
-
 
         // FIXME SQL exception: syntax error near ',' when list > 1
 //        long[] nodeIds = bookMap.get(name);
@@ -107,6 +110,8 @@ public class LoreRecords extends AppCompatActivity{
 //            Log.i("Book: ", bookName);
 //        }
 
+        recordAdapter = new RecordAdapter(this, recordInfoList);
+        recyclerView.setAdapter(recordAdapter);
 
     }
     private class NodeChildrenThread extends Thread{
@@ -139,5 +144,10 @@ public class LoreRecords extends AppCompatActivity{
         } else {
             return hash;
         }
+    }
+    private int getImageResource(String name){
+        Resources resources = this.getResources();
+        String fileName = name.replaceAll("[^a-zA-Z0-9 ]", "").replaceAll(" ", "_").toLowerCase();
+        return resources.getIdentifier(fileName, "drawable", this.getPackageName());
     }
 }
