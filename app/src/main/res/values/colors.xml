@@ -9,4 +9,5 @@
     <color name="darkBackground">#292929</color>
     <color name="darkText">#6B6B6B</color>
     <color name="recordsLightBackground">#878787</color>
+    <color name="darkTint">#616161</color>
 </resources>
