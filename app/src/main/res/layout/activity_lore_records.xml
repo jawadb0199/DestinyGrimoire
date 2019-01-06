@@ -23,7 +23,9 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@drawable/light_border"
-            android:src="@drawable/the_light" />
+            android:src="@drawable/the_light"
+            android:tag="The Light"
+            android:onClick="showBooks"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -32,7 +34,9 @@
             android:layout_marginStart="3dp"
             android:layout_weight="1"
             android:background="@drawable/light_border"
-            android:src="@drawable/dusk_and_dawn" />
+            android:src="@drawable/dusk_and_dawn"
+            android:tag="Dusk and Dawn"
+            android:onClick="showBooks"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -41,7 +45,9 @@
             android:layout_marginStart="6dp"
             android:layout_weight="1"
             android:background="@drawable/light_border"
-            android:src="@drawable/the_darkness" />
+            android:src="@drawable/the_darkness"
+            android:tag="The Darkness"
+            android:onClick="showBooks"/>
 
     </LinearLayout>
 
