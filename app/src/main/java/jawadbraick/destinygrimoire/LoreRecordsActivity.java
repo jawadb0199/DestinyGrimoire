@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -23,6 +24,8 @@ public class LoreRecordsActivity extends AppCompatActivity{
     private Thread getNodeChildrenThread;
     private HashMap<String, long[]> bookMap = new HashMap<>();
     private final String[] NODE_NAMES = {"The Light", "Dusk and Dawn", "The Darkness"};
+    private ImageButton prevView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -41,6 +44,9 @@ public class LoreRecordsActivity extends AppCompatActivity{
         recordAdapter = new RecordAdapter(this, recordData);
         recyclerView.setAdapter(recordAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        prevView = (ImageButton) findViewById(R.id.theLightButton);
+        prevView.setBackgroundTintList(getResources().getColorStateList(R.color.darkTint));
 
     }
 
@@ -69,6 +75,10 @@ public class LoreRecordsActivity extends AppCompatActivity{
     }
 
     public void showBooks(View view){
+        prevView.setBackgroundTintList(null);
+        prevView = (ImageButton) view;
+        view.setBackgroundTintList(getResources().getColorStateList(R.color.darkTint));
+
         String name = view.getTag().toString();
 
         try {
@@ -114,6 +124,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         recyclerView.setAdapter(recordAdapter);
 
     }
+
     private class NodeChildrenThread extends Thread{
         String[] names;
 
