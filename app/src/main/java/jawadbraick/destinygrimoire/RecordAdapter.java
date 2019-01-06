@@ -34,8 +34,8 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
     public void onBindViewHolder(RecordViewHolder holder, int position){
         RecordInfo current = recordInfoList.get(position);
 
-        holder.recordIcon.setImageResource(current.iconId);
-        holder.recordText.setText(current.name);
+        holder.recordIcon.setImageResource(current.getIconId());
+        holder.recordText.setText(current.getName());
     }
 
     @Override
