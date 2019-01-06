@@ -4,18 +4,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.huma.room_for_asset.RoomAsset;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class LoreRecords extends AppCompatActivity{
     private RecyclerView recyclerView;
     private RecordAdapter recordAdapter;
+    private ManifestDatabase database;
+    private Thread getNodeChildrenThread;
+    private HashMap<String, long[]> bookMap = new HashMap<>();
+    private final String[] NODE_NAMES = {"The Light", "Dusk and Dawn", "The Darkness"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lore_records);
+
+        database = RoomAsset.databaseBuilder(this, ManifestDatabase.class, "destiny2_manifest_lore.db").allowMainThreadQueries().build();
+
+        getNodeChildrenThread = new NodeChildrenThread(NODE_NAMES);
+        getNodeChildrenThread.start();
 
 //        LayoutInflater inflater = this.getLayoutInflater();
         recyclerView = (RecyclerView) findViewById(R.id.bookList);
@@ -51,5 +69,75 @@ public class LoreRecords extends AppCompatActivity{
 
         return recordInfoList;
 
+    }
+
+    public void showBooks(View view){
+        String name = view.getTag().toString();
+
+        try {
+            getNodeChildrenThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        long[] nodes = bookMap.get(name);
+//        long[] nodes = {1582800871L, -1232389968L};
+//        String[] nodeIds = {"'1582800871'", "'-1232389968'"};
+        ArrayList<Long> nodeId = new ArrayList<>(1);
+        nodeId.add(0L);
+        Log.i("Theme: ", name);
+
+        for(int i = 0; i < nodes.length; i++){
+
+            nodeId.set(0, nodes[i]);
+            List<PresentationNode> list = database.getDao().getPresentationNodeById(nodeId);
+            JsonObject json = list.get(0).getJson();
+            String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+            Log.i("Book: ", bookName);
+        }
+
+
+        // FIXME SQL exception: syntax error near ',' when list > 1
+//        long[] nodeIds = bookMap.get(name);
+//        List<PresentationNode> list = database.getDao().getPresentationNodeById(nodeIds);
+//
+//        for(PresentationNode n: list){
+//            JsonObject json = n.getJson();
+//            String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+//            Log.i("Book: ", bookName);
+//        }
+
+
+    }
+    private class NodeChildrenThread extends Thread{
+        String[] names;
+
+        NodeChildrenThread(String[] names){
+            this.names = names;
+        }
+        @Override
+        public void run(){
+            for(String name: names){
+                PresentationNode light = database.getDao().getPresentationNodeByText("%" + name + "%").get(0);
+                JsonObject json = light.getJson();
+                JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("presentationNodes");
+
+                long[] ids = new long[childNodes.size()];
+                for(int i = 0; i < childNodes.size(); i++){
+                    JsonObject child = (JsonObject) childNodes.get(i);
+                    long hash  = Long.parseLong(child.get("presentationNodeHash").getAsString());
+                    ids[i] = convertHash(hash);
+                }
+                bookMap.put(name, ids);
+            }
+        }
+    }
+    private long convertHash(long hash){
+        final long offset = 4294967296L;
+        if ((hash & (offset/2)) != 0){
+            return hash-offset;
+        } else {
+            return hash;
+        }
     }
 }
