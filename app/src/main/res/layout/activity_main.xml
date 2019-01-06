@@ -39,7 +39,7 @@
                 android:text="Destiny 2 Lore Triumphs"
                 android:layout_gravity="center"
                 android:layout_marginBottom="23dp"
-                android:onClick="openRecords"/>
+                android:onClick="viewRecords"/>
 
             <Button
                 android:id="@+id/grimorieButton"
