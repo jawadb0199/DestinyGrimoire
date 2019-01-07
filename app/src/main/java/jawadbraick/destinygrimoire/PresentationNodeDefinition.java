@@ -8,26 +8,4 @@ import android.arch.persistence.room.TypeConverters;
 import com.google.gson.JsonObject;
 
 @Entity(tableName = "DestinyPresentationNodeDefinition")
-public class PresentationNodeDefinition{
-    @PrimaryKey
-    private long id;
-
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private JsonObject json;
-
-    public long getId(){
-        return id;
-    }
-
-    public void setId(long id){
-        this.id = id;
-    }
-
-    public JsonObject getJson(){
-        return json;
-    }
-
-    public void setJson(JsonObject json){
-        this.json = json;
-    }
-}
+public class PresentationNodeDefinition extends ManifestDefintion{}
