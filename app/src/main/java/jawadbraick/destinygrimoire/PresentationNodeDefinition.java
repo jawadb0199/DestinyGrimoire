@@ -8,7 +8,7 @@ import android.arch.persistence.room.TypeConverters;
 import com.google.gson.JsonObject;
 
 @Entity(tableName = "DestinyPresentationNodeDefinition")
-public class PresentationNode{
+public class PresentationNodeDefinition{
     @PrimaryKey
     private long id;
 
