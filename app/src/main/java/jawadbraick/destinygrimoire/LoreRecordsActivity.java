@@ -98,7 +98,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         for(int i = 0; i < nodes.length; i++){
 
             nodeId.set(0, nodes[i]);
-            List<PresentationNode> list = database.getDao().getPresentationNodeById(nodeId);
+            List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
             JsonObject json = list.get(0).getJson();
             String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
             if(bookName.equals("Classified")){
@@ -112,9 +112,9 @@ public class LoreRecordsActivity extends AppCompatActivity{
 
         // FIXME SQL exception: syntax error near ',' when list > 1
 //        long[] nodeIds = bookMap.get(name);
-//        List<PresentationNode> list = database.getDao().getPresentationNodeById(nodeIds);
+//        List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeIds);
 //
-//        for(PresentationNode n: list){
+//        for(PresentationNodeDefinition n: list){
 //            JsonObject json = n.getJson();
 //            String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
 //            Log.i("Book: ", bookName);
@@ -134,7 +134,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         @Override
         public void run(){
             for(String name: names){
-                PresentationNode light = database.getDao().getPresentationNodeByText("%" + name + "%").get(0);
+                PresentationNodeDefinition light = database.getDao().getPresentationNodeByText("%" + name + "%").get(0);
                 JsonObject json = light.getJson();
                 JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("presentationNodes");
 
