@@ -32,7 +32,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lore_records);
 
-        database = RoomAsset.databaseBuilder(this, ManifestDatabase.class, "destiny2_manifest_lore.db").allowMainThreadQueries().build();
+        database = ManifestDatabase.getInstance(this);
 
         getNodeChildrenThread = new NodeChildrenThread(NODE_NAMES);
         getNodeChildrenThread.start();
@@ -47,6 +47,13 @@ public class LoreRecordsActivity extends AppCompatActivity{
 
         prevView = (ImageButton) findViewById(R.id.theLightButton);
         prevView.setBackgroundTintList(getResources().getColorStateList(R.color.darkTint));
+
+        ArrayList<Long> args = new ArrayList<>();
+        args.add(-2119364226L);
+        RecordDefinition record = database.getDao().getRecordById(args).get(0);
+        JsonObject recordJson = record.getJson();
+        String recordName = recordJson.getAsJsonObject("displayProperties").get("name").getAsString();
+        Log.i("Record: ", recordName);
 
     }
 
