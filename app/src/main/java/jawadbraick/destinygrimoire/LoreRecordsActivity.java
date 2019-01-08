@@ -18,7 +18,7 @@ import java.util.List;
 
 public class LoreRecordsActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
-    private RecordAdapter recordAdapter;
+    private PresentationNodeAdapter presentationNodeAdapter;
     private ManifestDatabase database;
     private Thread getNodeChildrenThread;
     private HashMap<String, long[]> bookMap = new HashMap<>();
@@ -40,8 +40,8 @@ public class LoreRecordsActivity extends AppCompatActivity{
         recyclerView = (RecyclerView) findViewById(R.id.bookList);
 
         ArrayList<RecordInfo> recordData = (ArrayList) getRecordData();
-        recordAdapter = new RecordAdapter(this, recordData, getFragmentManager());
-        recyclerView.setAdapter(recordAdapter);
+        presentationNodeAdapter = new PresentationNodeAdapter(this, recordData, getFragmentManager());
+        recyclerView.setAdapter(presentationNodeAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         prevView = (ImageButton) findViewById(R.id.theLightButton);
@@ -126,8 +126,8 @@ public class LoreRecordsActivity extends AppCompatActivity{
 //            Log.i("Book: ", bookName);
 //        }
 
-        recordAdapter = new RecordAdapter(this, recordInfoList, getFragmentManager());
-        recyclerView.setAdapter(recordAdapter);
+        presentationNodeAdapter = new PresentationNodeAdapter(this, recordInfoList, getFragmentManager());
+        recyclerView.setAdapter(presentationNodeAdapter);
 
     }
 
