@@ -1,5 +1,7 @@
 package jawadbraick.destinygrimoire;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,7 +16,6 @@ import com.google.gson.JsonObject;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -24,12 +25,14 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
     private ManifestDatabase database;
     private ConcurrentHashMap<String, long[]> childIdMap;
     private ThreadGroup childIdThreads;
+    private FragmentManager fm;
 
-    public RecordAdapter(Context context, List<RecordInfo> recordData){
+    public RecordAdapter(Context context, List<RecordInfo> recordData, FragmentManager fm){
         super();
         this.inflater = LayoutInflater.from(context);
         this.recordData = recordData;
         this.database = ManifestDatabase.getInstance(context);
+        this.fm = fm;
         loadChildIdMap();
     }
 
@@ -77,6 +80,13 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
                     e.printStackTrace();
                 }
             }
+            RecordsFragment frag = new RecordsFragment();
+            frag.setName(name);
+            frag.setRecordIds(childIdMap.get(name));
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.add(R.id.loreRecordsActivity, frag, "RecordsFragment");
+            transaction.commit();
+
             Log.i("onClickChildRecords: ", Arrays.toString(childIdMap.get(name)));
 
         }

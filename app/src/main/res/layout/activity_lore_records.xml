@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/recordsLightBackground"
-    tools:context=".LoreRecordsActivity">
+    tools:context=".LoreRecordsActivity"
+    android:id="@+id/loreRecordsActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
