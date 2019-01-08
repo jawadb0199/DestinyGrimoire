@@ -1,8 +1,8 @@
 package jawadbraick.destinygrimoire;
 
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.huma.room_for_asset.RoomAsset;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +40,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         recyclerView = (RecyclerView) findViewById(R.id.bookList);
 
         ArrayList<RecordInfo> recordData = (ArrayList) getRecordData();
-        recordAdapter = new RecordAdapter(this, recordData);
+        recordAdapter = new RecordAdapter(this, recordData, getFragmentManager());
         recyclerView.setAdapter(recordAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -127,7 +126,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
 //            Log.i("Book: ", bookName);
 //        }
 
-        recordAdapter = new RecordAdapter(this, recordInfoList);
+        recordAdapter = new RecordAdapter(this, recordInfoList, getFragmentManager());
         recyclerView.setAdapter(recordAdapter);
 
     }
@@ -155,6 +154,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
             }
         }
     }
+
     private long convertHash(long hash){
         final long offset = 4294967296L;
         if ((hash & (offset/2)) != 0){
@@ -163,6 +163,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
             return hash;
         }
     }
+
     private int getImageResource(String name){
         Resources resources = this.getResources();
         String fileName = name.replaceAll("[^a-zA-Z0-9 ]", "").replaceAll(" ", "_").toLowerCase();
