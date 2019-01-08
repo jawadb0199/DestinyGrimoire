@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordViewHolder>{
+public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNodeAdapter.RecordViewHolder>{
     private LayoutInflater inflater;
     List<RecordInfo> recordData = Collections.emptyList();
     private ManifestDatabase database;
@@ -27,7 +27,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
     private ThreadGroup childIdThreads;
     private FragmentManager fm;
 
-    public RecordAdapter(Context context, List<RecordInfo> recordData, FragmentManager fm){
+    public PresentationNodeAdapter(Context context, List<RecordInfo> recordData, FragmentManager fm){
         super();
         this.inflater = LayoutInflater.from(context);
         this.recordData = recordData;
