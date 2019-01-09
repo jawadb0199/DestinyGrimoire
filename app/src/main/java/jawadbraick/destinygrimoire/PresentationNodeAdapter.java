@@ -80,6 +80,12 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
                     e.printStackTrace();
                 }
             }
+            RecordsFragment frag = new RecordsFragment();
+            frag.setName(name);
+            frag.setRecordIds(childIdMap.get(name));
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.add(R.id.loreRecordsActivity, frag, "RecordsFragment");
+            transaction.commit();
             Log.i("onClickChildRecords: ", Arrays.toString(childIdMap.get(name)));
         }
     }
