@@ -1,26 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
     android:background="@color/recordsLightBackground">
 
-
-    <TextView
-        android:id="@+id/bookNameText"
+    <LinearLayout
+        android:id="@+id/bookHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/light_border"
+        android:orientation="horizontal"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:layout_marginTop="8dp"
-        android:text="Book Name"
-        android:textSize="25dp"
-        android:textAlignment="center"
-        android:background="@drawable/light_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/bookIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/the_man_they_call_cayde" />
+
+        <TextView
+            android:id="@+id/bookNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="The Man They Call Cayde"
+            android:textAlignment="gravity"
+            android:textSize="23dp" />
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -28,7 +45,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookNameText">
+        app:layout_constraintTop_toBottomOf="@+id/bookHeader">
     </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
