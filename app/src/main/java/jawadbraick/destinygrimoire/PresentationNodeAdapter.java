@@ -15,19 +15,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNodeAdapter.PresentationNodeViewHolder>{
     private LayoutInflater inflater;
-    List<RecordInfo> presentationNodeData;
+    List<PresentationNodeInfo> presentationNodeData;
     private ManifestDatabase database;
     private ConcurrentHashMap<String, long[]> childIdMap;
     private ThreadGroup childIdThreads;
     private FragmentManager fm;
 
-    public PresentationNodeAdapter(Context context, List<RecordInfo> presentationNodeData, FragmentManager fm){
+    public PresentationNodeAdapter(Context context, List<PresentationNodeInfo> presentationNodeData, FragmentManager fm){
         super();
         this.inflater = LayoutInflater.from(context);
         this.presentationNodeData = presentationNodeData;
@@ -47,7 +46,7 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
 
     @Override
     public void onBindViewHolder(PresentationNodeViewHolder holder, int position){
-        RecordInfo current = presentationNodeData.get(position);
+        PresentationNodeInfo current = presentationNodeData.get(position);
 
         holder.recordIcon.setImageResource(current.getIconId());
         holder.recordText.setText(current.getName());

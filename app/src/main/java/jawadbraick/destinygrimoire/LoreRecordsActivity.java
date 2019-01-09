@@ -39,8 +39,8 @@ public class LoreRecordsActivity extends AppCompatActivity{
 //        LayoutInflater inflater = this.getLayoutInflater();
         recyclerView = (RecyclerView) findViewById(R.id.bookList);
 
-        ArrayList<RecordInfo> recordData = (ArrayList) getRecordData();
-        presentationNodeAdapter = new PresentationNodeAdapter(this, recordData, getFragmentManager());
+        ArrayList<PresentationNodeInfo> presentationNodeData = (ArrayList) getRecordData();
+        presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeData, getFragmentManager());
         recyclerView.setAdapter(presentationNodeAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -56,7 +56,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
 
     }
 
-    private List<RecordInfo> getRecordData(){
+    private List<PresentationNodeInfo> getRecordData(){
         int[] iconIds = {R.drawable.the_lawless_frontier,
                          R.drawable.the_man_they_call_cayde,
                          R.drawable.most_loyal,
@@ -70,13 +70,13 @@ public class LoreRecordsActivity extends AppCompatActivity{
                           "Eva's Journey",
                           "Dawning Delights"};
 
-        ArrayList<RecordInfo> recordInfoList = new ArrayList<>();
+        ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
         for(int i = 0; i < iconIds.length; i++){
-            RecordInfo current = new RecordInfo(iconIds[i], names[i]);
-            recordInfoList.add(current);
+            PresentationNodeInfo current = new PresentationNodeInfo(iconIds[i], names[i]);
+            presentationNodeInfoList.add(current);
         }
 
-        return recordInfoList;
+        return presentationNodeInfoList;
 
     }
 
@@ -96,7 +96,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         long[] nodes = bookMap.get(name);
 //        long[] nodes = {1582800871L, -1232389968L};
 //        String[] nodeIds = {"'1582800871'", "'-1232389968'"};
-        ArrayList<RecordInfo> recordInfoList = new ArrayList<>();
+        ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
         ArrayList<Long> nodeId = new ArrayList<>(1);
         nodeId.add(0L);
         Log.i("Theme: ", name);
@@ -111,7 +111,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
                 continue;
             }
             int bookImg = getImageResource(bookName);
-            recordInfoList.add(new RecordInfo(bookImg, bookName));
+            presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName));
 
             Log.i("Book: ", bookName);
         }
@@ -126,7 +126,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
 //            Log.i("Book: ", bookName);
 //        }
 
-        presentationNodeAdapter = new PresentationNodeAdapter(this, recordInfoList, getFragmentManager());
+        presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeInfoList, getFragmentManager());
         recyclerView.setAdapter(presentationNodeAdapter);
 
     }

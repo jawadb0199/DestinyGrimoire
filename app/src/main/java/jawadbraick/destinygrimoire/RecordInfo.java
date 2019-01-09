@@ -1,19 +1,14 @@
 package jawadbraick.destinygrimoire;
 
-public class RecordInfo{
-    private int iconId;
-    private String name;
+public class RecordInfo extends PresentationNodeInfo{
+    long loreId;
 
-    public RecordInfo(int iconId, String name){
-        this.iconId = iconId;
-        this.name = name;
+    public RecordInfo(int iconId, String name, long loreId){
+        super(iconId, name);
+        this.loreId = loreId;
     }
 
-    public int getIconId(){
-        return iconId;
-    }
-
-    public String getName(){
-        return name;
+    public long getLoreId(){
+        return loreId;
     }
 }
