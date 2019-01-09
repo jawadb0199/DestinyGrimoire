@@ -18,7 +18,7 @@ import com.google.gson.JsonParser;
 import java.lang.reflect.Type;
 import java.util.Set;
 
-import uk.co.deanwild.flowtextview.FlowTextView;
+//import uk.co.deanwild.flowtextview.FlowTextView;
 
 public class DisplayCard extends AppCompatActivity{
     private Context context;
