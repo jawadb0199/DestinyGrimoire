@@ -84,9 +84,7 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
             frag.setName(name);
             frag.setRecordIds(childIdMap.get(name));
             FragmentTransaction transaction = fm.beginTransaction();
-            transaction.add(R.id.loreRecordsActivity, frag, "RecordsFragment");
-            transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.add(R.id.loreRecordsActivity, frag, "RecordsFragment").addToBackStack(null).commit();
             Log.i("onClickChildRecords: ", Arrays.toString(childIdMap.get(name)));
         }
     }
