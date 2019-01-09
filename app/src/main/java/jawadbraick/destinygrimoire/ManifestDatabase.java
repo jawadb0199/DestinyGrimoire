@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.huma.room_for_asset.RoomAsset;
 
-@Database(entities = {PresentationNodeDefinition.class, RecordDefinition.class }, version = 2)
+@Database(entities = {PresentationNodeDefinition.class, RecordDefinition.class, LoreDefinition.class}, version = 2)
 @TypeConverters({Converters.class})
 public abstract class ManifestDatabase extends RoomDatabase{
     private static volatile ManifestDatabase instance;
