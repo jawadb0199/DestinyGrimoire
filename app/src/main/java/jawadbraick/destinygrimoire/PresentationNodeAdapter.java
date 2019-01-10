@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -95,11 +96,14 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
         for(int i = 0; i < presentationNodeData.size(); i++){
 
             final String name = presentationNodeData.get(i).getName();
+            final long id = presentationNodeData.get(i).getNodeId();
 
             new Thread(childIdThreads, new Runnable(){
                 @Override
                 public void run(){
-                    PresentationNodeDefinition node = database.getDao().getPresentationNodeByText("%" + name + "%").get(0);
+                    ArrayList<Long> args = new ArrayList<>();
+                    args.add(id);
+                    PresentationNodeDefinition node = database.getDao().getPresentationNodeById(args).get(0);
                     JsonObject json = node.getJson();
                     JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("records");
 
