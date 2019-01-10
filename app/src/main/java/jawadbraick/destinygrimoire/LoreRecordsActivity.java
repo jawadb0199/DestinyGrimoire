@@ -69,10 +69,11 @@ public class LoreRecordsActivity extends AppCompatActivity{
                           "Ghost Stories",
                           "Eva's Journey",
                           "Dawning Delights"};
+        long[] ids = {-1847159559L, 396866327L, 648415847L, 1420597821L, 335014236L, -822671482L};
 
         ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
         for(int i = 0; i < iconIds.length; i++){
-            PresentationNodeInfo current = new PresentationNodeInfo(iconIds[i], names[i]);
+            PresentationNodeInfo current = new PresentationNodeInfo(iconIds[i], names[i], ids[i]);
             presentationNodeInfoList.add(current);
         }
 
@@ -111,7 +112,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
                 continue;
             }
             int bookImg = getImageResource(bookName);
-            presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName));
+            presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
 
             Log.i("Book: ", bookName);
         }
