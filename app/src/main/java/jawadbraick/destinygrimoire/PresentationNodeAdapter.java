@@ -38,7 +38,7 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
 
     @Override
     public PresentationNodeViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = inflater.inflate(R.layout.recyclerview_row, parent, false);
+        View view = inflater.inflate(R.layout.presentation_node_row, parent, false);
         PresentationNodeViewHolder holder = new PresentationNodeViewHolder(view);
 
         return holder;

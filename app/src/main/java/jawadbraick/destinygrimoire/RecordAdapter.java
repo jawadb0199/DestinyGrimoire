@@ -23,7 +23,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
 
     @Override
     public RecordViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = inflater.inflate(R.layout.recyclerview_row, parent, false);
+        View view = inflater.inflate(R.layout.record_row, parent, false);
         RecordViewHolder holder = new RecordViewHolder(view);
 
         return holder;
