@@ -50,7 +50,7 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
         PresentationNodeInfo current = presentationNodeData.get(position);
 
         holder.recordIcon.setImageResource(current.getIconId());
-        holder.recordText.setText(current.getName());
+        holder.recordText.setText(current.getNodeName());
     }
 
     @Override
@@ -95,7 +95,7 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
 
         for(int i = 0; i < presentationNodeData.size(); i++){
 
-            final String name = presentationNodeData.get(i).getName();
+            final String name = presentationNodeData.get(i).getNodeName();
             final long id = presentationNodeData.get(i).getNodeId();
 
             new Thread(childIdThreads, new Runnable(){

@@ -39,7 +39,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
         RecordInfo current = recordData.get(position);
 
         holder.recordIcon.setImageResource(current.getIconId());
-        holder.recordText.setText(current.getName());
+        holder.recordText.setText(current.getRecordName());
     }
 
     @Override
@@ -61,11 +61,14 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
 
         @Override
         public void onClick(View view){
+            RecordInfo info = recordData.get(getAdapterPosition());
+
             LoreFragment frag = new LoreFragment();
+            frag.setInfo(info);
             FragmentTransaction transaction = fm.beginTransaction();
             transaction.add(R.id.loreRecordsActivity, frag, "LoreFragment").addToBackStack(null).commit();
-            RecordInfo info = recordData.get(getAdapterPosition());
-            Log.i("Lore Name and Id: ", info.getName() + ": " + info.getLoreId());
+
+            Log.i("Lore Name and Id: ", info.getRecordName() + ": " + info.getLoreId());
         }
     }
 
