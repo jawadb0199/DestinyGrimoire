@@ -44,7 +44,7 @@ public class RecordsFragment extends Fragment{
         header.setText(name);
 
         recyclerView = view.findViewById(R.id.recordList);
-        recordAdapter = new RecordAdapter(getActivity(), createRecordInfoList());
+        recordAdapter = new RecordAdapter(getActivity(), createRecordInfoList(), getFragmentManager());
         recyclerView.setAdapter(recordAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

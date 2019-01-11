@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        android:background="@color/recordsLightBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/light_border"
+                android:layout_marginBottom="3dp"
+                android:paddingBottom="4dp"
+                android:backgroundTint="@color/darkTint">
+
+                <ImageView
+                    android:id="@+id/loreIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/the_man_they_call_cayde"/>
+                <TextView
+                    android:id="@+id/loreTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="The Man They Call Cayde"
+                    android:textSize="30dp"
+                    android:textAlignment="gravity"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardInfoBlock">
+
+                <ImageView
+                    android:id="@+id/background"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/a_drifters_gambit_large"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/loreText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="250dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/lightBackground"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="5dp"
+                    android:text="Kranox, the Graven is said to be the Keeper of the Worlds' Grave, a vast repository chronicling the Hive's history of interstellar conquests. Every world they have devoured, every life they have eradicated, every enemy they've faced. \n\nDefeating Kranox and cracking the secrets of the Worlds' Grave could provide the City with the keys to unraveling the Hive's true goals and their ultimate plans for Earth."
+                    android:textColor="@color/darkBackground"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:padding="2dp"-->
+                <!--android:text="All joking aside—maybe I've made mistakes. Maybe some more recently than others.\n\nHard to believe, I know, but maybe it's true. Maybe.-->
+
+                <!--Here's the thing about mistakes: you learn from them. Again, this is assuming the theoretical concept of me having made some mistakes is true. So, yeah, maybe that's what I'm doing. Trying to learn from these very hypothetical slipups. Turning inward, they call it. \They\ being Ikora. Eris calls it something different. Eris calls a lotta things something different. \n\nI miss that girl.\n\nBut here I am stalling—buying time.\n\nThis ain't easy for me.\n\nThought it would be. Easy, I mean. Or, at least… easier than this. Thought a lot of things would be easier. Hell… Thought a lotta things about a lotta things. But maybe that's what makes me the person I am. Makes any of us part of humanity—all our big thoughts and big plans, hopes and dreams and all that squishy nonsense.\n\nOK, fine, look: If I'm playing at honesty, and I think that's what I'm doing here, maybe those hopes and dreams are all that really matters. Just, not losing sight of them is the hard part. Life is full of those little distractions that fudge the edges, make those hopes and dreams a little blurrier.\n\nThat's the power of \maybes,\ I suppose—the temptation of… playing both ends against the middle.\n\nMaybes provide… wiggle room. And I like my edges fudgy. And I loooooves me some wiggle room. But if I'm gonna stay true to this whole rambling \dear diary\ how-do-ya-do business, guess what I'm sayin' is…\n\nGuess what I'm saying is, I'm sick of \maybes.\ And, if I'm a straight shooter—and I'm nothing if not—then I gotta shoot straight… even when there ain't a gun in my hand.\n\nSo, let's… let's keep this between me and you, OK?\n\nHere's the deal: My name is Cayde-6…\n\nAnd this is my story." />-->
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
