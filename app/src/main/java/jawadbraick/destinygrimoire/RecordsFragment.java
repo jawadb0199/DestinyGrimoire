@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -59,12 +60,14 @@ public class RecordsFragment extends Fragment{
     }
 
     private List<RecordInfo> createRecordInfoList(){
-        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>();
+        RecordInfo[] temp = new RecordInfo[recordIds.length-1];
+        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(temp));
         Collections.synchronizedList(recordInfoList);
 
         ThreadGroup getRecordInfo = new ThreadGroup("getRecordInfo");
 
         for(int i = 1; i < recordIds.length; i++){
+            final int index = i;
             final long id = recordIds[i];
             new Thread(getRecordInfo, new Runnable(){
                 @Override
@@ -77,7 +80,7 @@ public class RecordsFragment extends Fragment{
                     String loreName = json.getAsJsonObject("displayProperties").get("name").getAsString();
                     long loreId = convertHash(json.get("loreHash").getAsLong());
 
-                    recordInfoList.add(new RecordInfo(iconId, loreName, loreId));
+                    recordInfoList.set(index-1, new RecordInfo(iconId, loreName, loreId));
 
                 }
             }).start();
