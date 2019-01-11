@@ -2,18 +2,18 @@ package jawadbraick.destinygrimoire;
 
 public class PresentationNodeInfo{
     private int iconId;
-    private String name;
+    private String nodeName;
     private long nodeId;
 
 
-    public PresentationNodeInfo(int iconId, String name){
+    public PresentationNodeInfo(int iconId, String nodeName){
         this.iconId = iconId;
-        this.name = name;
+        this.nodeName = nodeName;
     }
 
-    public PresentationNodeInfo(int iconId, String name, long nodeId){
+    public PresentationNodeInfo(int iconId, String nodeName, long nodeId){
         this.iconId = iconId;
-        this.name = name;
+        this.nodeName = nodeName;
         this.nodeId = nodeId;
     }
 
@@ -22,8 +22,8 @@ public class PresentationNodeInfo{
         return iconId;
     }
 
-    public String getName(){
-        return name;
+    public String getNodeName(){
+        return nodeName;
     }
 
     public long getNodeId(){

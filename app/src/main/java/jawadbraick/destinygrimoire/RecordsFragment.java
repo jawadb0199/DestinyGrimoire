@@ -80,7 +80,7 @@ public class RecordsFragment extends Fragment{
                     String loreName = json.getAsJsonObject("displayProperties").get("name").getAsString();
                     long loreId = convertHash(json.get("loreHash").getAsLong());
 
-                    recordInfoList.set(index-1, new RecordInfo(iconId, loreName, loreId));
+                    recordInfoList.set(index-1, new RecordInfo(iconId, name, loreName, loreId));
 
                 }
             }).start();
