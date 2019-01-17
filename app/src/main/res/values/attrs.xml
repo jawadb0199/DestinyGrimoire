@@ -4,4 +4,5 @@
     <attr name="backgroundColor" format="color"/>
     <attr name="tintColor" format="color"/>
     <attr name="textBackground" format="color"/>
+    <attr name="loreBackground" format="color"/>
 </resources>
