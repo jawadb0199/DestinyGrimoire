@@ -13,21 +13,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="10dp"
-        android:background="@color/recordsLightBackground">
+        android:background="?attr/backgroundColor">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/light_border"
                 android:layout_marginBottom="3dp"
                 android:paddingBottom="4dp"
-                android:backgroundTint="@color/darkTint">
+                android:backgroundTint="?attr/tintColor">
 
                 <ImageView
                     android:id="@+id/loreIcon"
@@ -75,7 +75,7 @@
                     android:layout_marginEnd="6dp"
                     android:layout_marginStart="6dp"
                     android:layout_marginTop="6dp"
-                    android:background="@color/lightBackground"
+                    android:background="?attr/textBackground"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:paddingTop="5dp"

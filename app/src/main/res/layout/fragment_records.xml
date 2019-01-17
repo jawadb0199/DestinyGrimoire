@@ -6,13 +6,13 @@
     android:paddingTop="8dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
-    android:background="@color/recordsLightBackground">
+    android:background="?attr/backgroundColor">
 
     <LinearLayout
         android:id="@+id/bookHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/darkTint"
+        android:background="?attr/tintColor"
         android:orientation="horizontal"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
