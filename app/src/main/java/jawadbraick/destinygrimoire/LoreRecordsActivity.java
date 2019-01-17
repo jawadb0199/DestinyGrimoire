@@ -1,10 +1,13 @@
 package jawadbraick.destinygrimoire;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -28,9 +31,19 @@ public class LoreRecordsActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        Boolean isDarkThemeEnabled = getSharedPreferences("userData", Context.MODE_PRIVATE).getBoolean("isDarkThemeEnabled", false);
+        if(isDarkThemeEnabled){
+            setTheme(R.style.ActivityTheme_Primary_Base_Dark);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lore_records);
 
+        SwitchCompat theme = (SwitchCompat) findViewById(R.id.themeSwitch);
+        if(isDarkThemeEnabled){
+            theme.setChecked(true);
+            theme.setText("Dark Theme");
+        }
         database = ManifestDatabase.getInstance(this);
 
         getNodeChildrenThread = new NodeChildrenThread(NODE_NAMES);
@@ -130,6 +143,23 @@ public class LoreRecordsActivity extends AppCompatActivity{
         presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeInfoList, getFragmentManager());
         recyclerView.setAdapter(presentationNodeAdapter);
 
+    }
+
+    public void toggleTheme(View view){
+        SwitchCompat theme = (SwitchCompat) view;
+        if(theme.isChecked()){
+            SharedPreferences.Editor editor = getSharedPreferences("userData", Context.MODE_PRIVATE).edit();
+            editor.putBoolean("isDarkThemeEnabled", true).apply();
+            setTheme(R.style.ActivityTheme_Primary_Base_Dark);
+            theme.setText("Dark Theme");
+        } else {
+            SharedPreferences.Editor editor = getSharedPreferences("userData", Context.MODE_PRIVATE).edit();
+            editor.putBoolean("isDarkThemeEnabled", false).apply();
+            setTheme(R.style.ActivityTheme_Primary_Base_Light);
+            theme.setText("Light Theme");
+        }
+
+        recreate();
     }
 
     private class NodeChildrenThread extends Thread{

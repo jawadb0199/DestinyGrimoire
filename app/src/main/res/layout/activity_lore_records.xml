@@ -9,47 +9,72 @@
     android:id="@+id/loreRecordsActivity">
 
     <LinearLayout
+        android:id="@+id/optionsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:minHeight="40dp">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/themeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:switchPadding="5dp"
+            android:layoutDirection="rtl"
+            android:text="Light Theme"
+            android:onClick="toggleTheme"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:weightSum="3">
+        android:paddingBottom="10dp"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionsHeader">
 
         <ImageButton
             android:id="@+id/theLightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
             android:layout_marginStart="5dp"
+            android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:background="@drawable/light_border"
+            android:onClick="showBooks"
             android:src="@drawable/the_light"
-            android:tag="The Light"
-            android:onClick="showBooks"/>
+            android:tag="The Light" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="3dp"
             android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
             android:layout_weight="1"
             android:background="@drawable/light_border"
+            android:onClick="showBooks"
             android:src="@drawable/dusk_and_dawn"
-            android:tag="Dusk and Dawn"
-            android:onClick="showBooks"/>
+            android:tag="Dusk and Dawn" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
             android:layout_marginStart="6dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@drawable/light_border"
+            android:onClick="showBooks"
             android:src="@drawable/the_darkness"
-            android:tag="The Darkness"
-            android:onClick="showBooks"/>
+            android:tag="The Darkness" />
 
     </LinearLayout>
 
@@ -64,9 +89,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-    </android.support.v7.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </android.support.constraint.ConstraintLayout>
