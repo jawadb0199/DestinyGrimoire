@@ -10,10 +10,20 @@
 
     <!-- Light base activity theme -->
     <style name="ActivityTheme.Primary.Base.Light" parent="Theme.AppCompat.NoActionBar">
-        <item name="textColor">#F4F4F6</item>
+        <item name="textColor">#262626</item>
         <item name="backgroundColor">#878787</item>
         <item name="tintColor">#616161</item>
         <item name="textBackground">#8D9195</item>
+        <item name="loreBackground">#878787</item>
+    </style>
+
+    <!-- Dark base activity theme -->
+    <style name="ActivityTheme.Primary.Base.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="textColor">#F2F2F2</item>
+        <item name="backgroundColor">#141414</item>
+        <item name="tintColor">#3D3D3D</item>
+        <item name="textBackground">#141414</item>
+        <item name="loreBackground">#5E6163</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
