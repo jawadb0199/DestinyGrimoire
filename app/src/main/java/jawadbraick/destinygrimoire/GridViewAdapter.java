@@ -3,6 +3,8 @@ package jawadbraick.destinygrimoire;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +13,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class GridViewAdapter extends BaseAdapter{
-    private ArrayList<String> cardIdList;
-    private ArrayList<String> cardNameList;
+    private List<String> cardIdList;
+    private List<String> cardNameList;
     private Activity activity;
     private Context context;
 
-    public GridViewAdapter(Activity activity, Context context, ArrayList<String> cardIdList, ArrayList<String> cardNameList) {
+    public GridViewAdapter(Activity activity, Context context, List<String> cardIdList, List<String> cardNameList) {
         super();
         this.cardIdList = cardIdList;
         this.cardNameList = cardNameList;
@@ -72,15 +74,27 @@ public class GridViewAdapter extends BaseAdapter{
         }
 
         view.pageText.setText(cardNameList.get(position));
-        view.imageButtonPage.setImageResource(getImage(cardIdList.get(position)));
+        int imgID = getImage(cardIdList.get(position));
+
+
+
         if (cardIdList.get(position).equals("grimoire_cover")){
             view.imageButtonPage.setTag("");
+            view.imageButtonPage.setImageResource(imgID);
         } else {
+            view.imageButtonPage.setImageBitmap(reduceImage(imgID));
             view.imageButtonPage.setTag(cardIdList.get(position));
         }
         Log.d("GRID SOURCE", view.imageButtonPage.getDrawable().toString());
 
         return convertView;
+    }
+
+    private Bitmap reduceImage(int id){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = false;
+        options.inSampleSize = 3;
+        return BitmapFactory.decodeResource(context.getResources(), id, options);
     }
 
 }
