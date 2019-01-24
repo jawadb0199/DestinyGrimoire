@@ -56,10 +56,14 @@ public class DisplayCard extends AppCompatActivity{
         }
 
 //        Set Card Description Text
-        String cardDescription = stripHtml(cardJson.get("cardDescription").toString());
-        cardDescription = cardDescription.substring(1, cardDescription.length()-1);
-        TextView cardDescriptionText = findViewById(R.id.cardDescription);
-        cardDescriptionText.setText(cardDescription);
+        if(cardJson.get("cardDescription") != null) {
+            String cardDescription = stripHtml(cardJson.get("cardDescription").toString());
+            cardDescription = cardDescription.substring(1, cardDescription.length() - 1);
+            TextView cardDescriptionText = findViewById(R.id.cardDescription);
+            cardDescriptionText.setText(cardDescription);
+        } else {
+            findViewById(R.id.cardDescriptionBlock).setVisibility(View.GONE);
+        }
 
     }
     @SuppressWarnings("deprecation")
