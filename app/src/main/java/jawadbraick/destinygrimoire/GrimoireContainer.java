@@ -74,7 +74,7 @@ public class GrimoireContainer{
         pageCollection = getJsonObjectFromArray(themeCollection, "themeId", theme).getAsJsonArray("pageCollection");
     }
     private void setCardCollection(){
-        cardCollection = getJsonObjectFromArray(pageCollection, "pageId", page).getAsJsonArray("cardCollection");
+        cardCollection = getJsonObjectFromArray(pageCollection, "pageName", page).getAsJsonArray("cardCollection");
     }
     private void setCardJson(){
         cardJson = getJsonObjectFromArray(cardCollection, "cardId", card);
