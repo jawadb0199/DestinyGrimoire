@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/loreBackground">
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp"
-        android:background="?attr/loreBackground">
+        android:padding="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/bookHeader"
@@ -97,16 +97,8 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </android.support.constraint.ConstraintLayout>
 
-
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:padding="2dp"-->
-                <!--android:text="All joking aside—maybe I've made mistakes. Maybe some more recently than others.\n\nHard to believe, I know, but maybe it's true. Maybe.-->
-
-                <!--Here's the thing about mistakes: you learn from them. Again, this is assuming the theoretical concept of me having made some mistakes is true. So, yeah, maybe that's what I'm doing. Trying to learn from these very hypothetical slipups. Turning inward, they call it. \They\ being Ikora. Eris calls it something different. Eris calls a lotta things something different. \n\nI miss that girl.\n\nBut here I am stalling—buying time.\n\nThis ain't easy for me.\n\nThought it would be. Easy, I mean. Or, at least… easier than this. Thought a lot of things would be easier. Hell… Thought a lotta things about a lotta things. But maybe that's what makes me the person I am. Makes any of us part of humanity—all our big thoughts and big plans, hopes and dreams and all that squishy nonsense.\n\nOK, fine, look: If I'm playing at honesty, and I think that's what I'm doing here, maybe those hopes and dreams are all that really matters. Just, not losing sight of them is the hard part. Life is full of those little distractions that fudge the edges, make those hopes and dreams a little blurrier.\n\nThat's the power of \maybes,\ I suppose—the temptation of… playing both ends against the middle.\n\nMaybes provide… wiggle room. And I like my edges fudgy. And I loooooves me some wiggle room. But if I'm gonna stay true to this whole rambling \dear diary\ how-do-ya-do business, guess what I'm sayin' is…\n\nGuess what I'm saying is, I'm sick of \maybes.\ And, if I'm a straight shooter—and I'm nothing if not—then I gotta shoot straight… even when there ain't a gun in my hand.\n\nSo, let's… let's keep this between me and you, OK?\n\nHere's the deal: My name is Cayde-6…\n\nAnd this is my story." />-->
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.constraint.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>
