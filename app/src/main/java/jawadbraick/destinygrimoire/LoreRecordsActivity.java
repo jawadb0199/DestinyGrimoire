@@ -16,27 +16,30 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class LoreRecordsActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
     private PresentationNodeAdapter presentationNodeAdapter;
     private ManifestDatabase database;
     private Thread getNodeChildrenThread;
-    private HashMap<String, long[]> bookMap = new HashMap<>();
+    private ConcurrentHashMap<String, long[]> bookMap = new ConcurrentHashMap<>();
     private final String[] NODE_NAMES = {"The Light", "Dusk and Dawn", "The Darkness"};
     private ImageButton prevView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        database = ManifestDatabase.getInstance(this);
+        getNodeChildrenThread = new NodeChildrenThread(NODE_NAMES);
+        getNodeChildrenThread.start();
+
+        super.onCreate(savedInstanceState);
         Boolean isDarkThemeEnabled = getSharedPreferences("userData", Context.MODE_PRIVATE).getBoolean("isDarkThemeEnabled", false);
         if(isDarkThemeEnabled){
             setTheme(R.style.ActivityTheme_Primary_Base_Dark);
         }
-
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lore_records);
 
         SwitchCompat theme = (SwitchCompat) findViewById(R.id.themeSwitch);
@@ -44,53 +47,15 @@ public class LoreRecordsActivity extends AppCompatActivity{
             theme.setChecked(true);
             theme.setText("Dark Theme");
         }
-        database = ManifestDatabase.getInstance(this);
 
-        getNodeChildrenThread = new NodeChildrenThread(NODE_NAMES);
-        getNodeChildrenThread.start();
-
-//        LayoutInflater inflater = this.getLayoutInflater();
         recyclerView = (RecyclerView) findViewById(R.id.bookList);
-
-        ArrayList<PresentationNodeInfo> presentationNodeData = (ArrayList) getRecordData();
-        presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeData, getFragmentManager());
-        recyclerView.setAdapter(presentationNodeAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         prevView = (ImageButton) findViewById(R.id.theLightButton);
         prevView.setBackgroundTintList(getResources().getColorStateList(R.color.darkTint));
 
-        ArrayList<Long> args = new ArrayList<>();
-        args.add(-2119364226L);
-        RecordDefinition record = database.getDao().getRecordById(args).get(0);
-        JsonObject recordJson = record.getJson();
-        String recordName = recordJson.getAsJsonObject("displayProperties").get("name").getAsString();
-        Log.i("Record: ", recordName);
+        showBooks(findViewById(R.id.theLightButton));
 
-    }
-
-    private List<PresentationNodeInfo> getRecordData(){
-        int[] iconIds = {R.drawable.the_lawless_frontier,
-                         R.drawable.the_man_they_call_cayde,
-                         R.drawable.most_loyal,
-                         R.drawable.ghost_stories,
-                         R.drawable.evas_journey,
-                         R.drawable.dawning_delights};
-        String[] names = {"The Lawless Frontier",
-                          "The Man They Call Cayde",
-                          "Most Loyal",
-                          "Ghost Stories",
-                          "Eva's Journey",
-                          "Dawning Delights"};
-        long[] ids = {-1847159559L, 396866327L, 648415847L, 1420597821L, 335014236L, -822671482L};
-
-        ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
-        for(int i = 0; i < iconIds.length; i++){
-            PresentationNodeInfo current = new PresentationNodeInfo(iconIds[i], names[i], ids[i]);
-            presentationNodeInfoList.add(current);
-        }
-
-        return presentationNodeInfoList;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
