@@ -42,39 +42,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/optionsHeader">
 
-        <ImageButton
-            android:id="@+id/theLightButton"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="6dp"
-            android:layout_weight="1"
-            android:background="@drawable/light_border"
-            android:onClick="showBooks"
-            android:src="@drawable/the_light"
-            android:tag="The Light" />
+            android:layout_marginEnd="6dp">
 
-        <ImageButton
+            <ImageButton
+                android:id="@+id/theLightButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/light_border"
+                android:onClick="showBooks"
+                android:src="@drawable/the_light"
+                android:tag="The Light" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Light"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:background="@drawable/light_border"
-            android:onClick="showBooks"
-            android:src="@drawable/dusk_and_dawn"
-            android:tag="Dusk and Dawn" />
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="6dp">
 
-        <ImageButton
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/light_border"
+                android:onClick="showBooks"
+                android:src="@drawable/dusk_and_dawn"
+                android:tag="Dusk and Dawn" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dusk and Dawn"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="5dp"
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:background="@drawable/light_border"
-            android:onClick="showBooks"
-            android:src="@drawable/the_darkness"
-            android:tag="The Darkness" />
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="6dp">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/light_border"
+                android:onClick="showBooks"
+                android:src="@drawable/the_darkness"
+                android:tag="The Darkness" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Darkness"
+                android:textAlignment="center" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
