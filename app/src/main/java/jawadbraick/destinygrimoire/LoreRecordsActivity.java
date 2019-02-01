@@ -75,24 +75,35 @@ public class LoreRecordsActivity extends AppCompatActivity{
         long[] nodes = bookMap.get(name);
 //        long[] nodes = {1582800871L, -1232389968L};
 //        String[] nodeIds = {"'1582800871'", "'-1232389968'"};
-        ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
-        ArrayList<Long> nodeId = new ArrayList<>(1);
+        final ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
+        final ArrayList<Long> nodeId = new ArrayList<>(1);
         nodeId.add(0L);
         Log.i("Theme: ", name);
 
         for(int i = 0; i < nodes.length; i++){
-
             nodeId.set(0, nodes[i]);
-            List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
-            JsonObject json = list.get(0).getJson();
-            String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
-            if(bookName.equals("Classified")){
-                continue;
-            }
-            int bookImg = getImageResource(bookName);
-            presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
+            Thread t = new Thread(new Runnable(){
+                @Override
+                public void run(){
+                    List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
+                    JsonObject json = list.get(0).getJson();
+                    String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+                    if(bookName.equals("Classified")){
+                        return;
+                    }
+                    int bookImg = getImageResource(bookName);
+                    presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
 
-            Log.i("Book: ", bookName);
+                    Log.i("Book: ", bookName);
+                }
+            });
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
 
         // FIXME SQL exception: syntax error near ',' when list > 1
