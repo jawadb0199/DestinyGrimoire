@@ -3,8 +3,8 @@ package jawadbraick.destinygrimoire;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +13,11 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 
 public class Cards extends AppCompatActivity{
@@ -62,6 +64,7 @@ public class Cards extends AppCompatActivity{
             mAdapter = new GridViewAdapter(this, getApplicationContext(), cardIdList, cardNameList);
             CheckBox toggle = (CheckBox) header.getChildAt(0);
             toggle.setVisibility(View.INVISIBLE);
+            toggle.setText("");
         } else {
             createUserCardLists();
             mAdapter = new GridViewAdapter(this, getApplicationContext(), userCardIdList, userCardNameList);
