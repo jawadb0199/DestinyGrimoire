@@ -21,7 +21,7 @@ public abstract class ManifestDatabase extends RoomDatabase{
     private static void initDatabase(Context context){
         synchronized (ManifestDatabase.class) {
             if (instance == null) {
-                instance = RoomAsset.databaseBuilder(context, ManifestDatabase.class, "destiny2_manifest_lore.db").allowMainThreadQueries().build();
+                instance = RoomAsset.databaseBuilder(context, ManifestDatabase.class, "destiny2_manifest_lore.db").build();
             }
         }
     }
