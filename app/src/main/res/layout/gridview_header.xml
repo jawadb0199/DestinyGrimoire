@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="100"
-    android:layout_marginBottom="2dp"
-    android:background="@color/darkBackground">
+    android:layout_height="wrap_content"
+    android:background="@color/darkBackground"
+    android:orientation="horizontal"
+    android:weightSum="100">
 
     <CheckBox
         android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight="33"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:maxLines="3"
+        android:buttonTint="@color/lightText"
         android:onClick="toggleLockedCards"
         android:text="Show Locked Cards"
-        android:textColor="@color/lightText"
         android:textAppearance="@style/TextAppearance.Small"
-        android:buttonTint="@color/lightText"
-        android:visibility="visible"/>
+        android:textColor="@color/lightText"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/label"
         android:layout_width="0px"
         android:layout_height="match_parent"
+        android:layout_weight="40"
         android:fontFamily="sans-serif"
-        android:text="Exalted Hive"
-        android:layout_weight="34"
+        android:text="Vex Axis Minds"
         android:textAlignment="center"
-        android:textColor="@color/lightText"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/lightText" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight="33">
+        android:layout_height="match_parent"
+        android:layout_weight="30">
 
         <TextView
             android:id="@+id/score"
@@ -46,7 +45,9 @@
             android:textAlignment="viewEnd"
             android:textColor="@color/lightText"
             android:textSize="22sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
