@@ -1,7 +1,6 @@
 package jawadbraick.destinygrimoire;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,14 +18,13 @@ public class GridViewAdapter extends BaseAdapter{
     private List<String> cardIdList;
     private List<String> cardNameList;
     private Activity activity;
-    private Context context;
+    private final int spacing = 40;
 
-    public GridViewAdapter(Activity activity, Context context, List<String> cardIdList, List<String> cardNameList) {
+    public GridViewAdapter(Activity activity, List<String> cardIdList, List<String> cardNameList) {
         super();
         this.cardIdList = cardIdList;
         this.cardNameList = cardNameList;
         this.activity = activity;
-        this.context = context;
     }
 
     @Override
@@ -44,11 +42,11 @@ public class GridViewAdapter extends BaseAdapter{
         return 0;
     }
     private int getImage(String fileName){
-        Resources resources = context.getResources();
+        Resources resources = activity.getResources();
         if (Character.isDigit(fileName.charAt(0))){
             fileName = 'c' + fileName;
         }
-        return resources.getIdentifier(fileName, "drawable", context.getPackageName());
+        return resources.getIdentifier(fileName, "drawable", activity.getPackageName());
     }
 
     public class ViewHolder{
@@ -82,7 +80,9 @@ public class GridViewAdapter extends BaseAdapter{
             view.imageButtonPage.setTag("");
             view.imageButtonPage.setImageResource(imgID);
         } else {
-            view.imageButtonPage.setImageBitmap(reduceImage(imgID));
+
+            int width =  (parent.getWidth()-spacing)/3;
+            view.imageButtonPage.setImageBitmap(reduceImage(imgID, width));
             view.imageButtonPage.setTag(cardIdList.get(position));
         }
         Log.d("GRID SOURCE", view.imageButtonPage.getDrawable().toString());
@@ -90,11 +90,34 @@ public class GridViewAdapter extends BaseAdapter{
         return convertView;
     }
 
-    private Bitmap reduceImage(int id){
+    private Bitmap reduceImage(int id, int reqWidth){
         BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(activity.getResources(), id, options);
+
+        boolean tabletSize = activity.getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
+            options.inSampleSize = calculateInSampleSize(options, reqWidth);
+        } else {
+            options.inSampleSize = 5;
+        }
+
         options.inJustDecodeBounds = false;
-        options.inSampleSize = 3;
-        return BitmapFactory.decodeResource(context.getResources(), id, options);
+        return BitmapFactory.decodeResource(activity.getResources(), id, options);
     }
 
+    private int calculateInSampleSize(BitmapFactory.Options options, int reqWidth){
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (width > reqWidth) {
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((width / inSampleSize) >= reqWidth) {
+                inSampleSize++;
+            }
+        }
+
+        return inSampleSize-1;
+    }
 }

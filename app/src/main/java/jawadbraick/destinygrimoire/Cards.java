@@ -61,15 +61,14 @@ public class Cards extends AppCompatActivity{
 
         if (userCardCollection == null){
             createCardLists();
-            mAdapter = new GridViewAdapter(this, getApplicationContext(), cardIdList, cardNameList);
+            mAdapter = new GridViewAdapter(this, cardIdList, cardNameList);
             CheckBox toggle = (CheckBox) header.getChildAt(0);
             toggle.setVisibility(View.INVISIBLE);
             toggle.setText("");
         } else {
             createUserCardLists();
-            mAdapter = new GridViewAdapter(this, getApplicationContext(), userCardIdList, userCardNameList);
+            mAdapter = new GridViewAdapter(this, userCardIdList, userCardNameList);
         }
-
 
         gridView.addHeaderView(header);
         gridView.setAdapter(mAdapter);
@@ -124,10 +123,10 @@ public class Cards extends AppCompatActivity{
     public void toggleLockedCards(View view){
         CheckBox checkBox = (CheckBox) view;
         if (checkBox.isChecked()){
-            mAdapter = new GridViewAdapter(this, getApplicationContext(), cardIdList, cardNameList);
+            mAdapter = new GridViewAdapter(this, cardIdList, cardNameList);
             gridView.setAdapter(mAdapter);
         } else {
-            mAdapter = new GridViewAdapter(this, getApplicationContext(), userCardIdList, userCardNameList);
+            mAdapter = new GridViewAdapter(this, userCardIdList, userCardNameList);
             gridView.setAdapter(mAdapter);
         }
     }
