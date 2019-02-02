@@ -72,15 +72,19 @@ public class RecordsFragment extends Fragment{
             new Thread(getRecordInfo, new Runnable(){
                 @Override
                 public void run(){
-                    ArrayList<Long> args = new ArrayList<>();
-                    args.add(id);
-                    RecordDefinition record = database.getDao().getRecordById(args).get(0);
-                    JsonObject json = record.getJson();
+                    try {
+                        ArrayList<Long> args = new ArrayList<>();
+                        args.add(id);
+                        RecordDefinition record = database.getDao().getRecordById(args).get(0);
+                        JsonObject json = record.getJson();
 
-                    String loreName = json.getAsJsonObject("displayProperties").get("name").getAsString();
-                    long loreId = convertHash(json.get("loreHash").getAsLong());
+                        String loreName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+                        long loreId = convertHash(json.get("loreHash").getAsLong());
 
-                    recordInfoList.set(index-1, new RecordInfo(iconId, name, loreName, loreId));
+                        recordInfoList.set(index - 1, new RecordInfo(iconId, name, loreName, loreId));
+                    } catch (Exception e){
+                        return;
+                    }
 
                 }
             }).start();

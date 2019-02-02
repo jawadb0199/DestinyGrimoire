@@ -98,19 +98,23 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
             new Thread(childIdThreads, new Runnable(){
                 @Override
                 public void run(){
-                    ArrayList<Long> args = new ArrayList<>();
-                    args.add(id);
-                    PresentationNodeDefinition node = database.getDao().getPresentationNodeById(args).get(0);
-                    JsonObject json = node.getJson();
-                    JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("records");
+                    try {
+                        ArrayList<Long> args = new ArrayList<>();
+                        args.add(id);
+                        PresentationNodeDefinition node = database.getDao().getPresentationNodeById(args).get(0);
+                        JsonObject json = node.getJson();
+                        JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("records");
 
-                    long[] ids = new long[childNodes.size()];
-                    for(int j = 0; j < childNodes.size(); j++){
-                        JsonObject child = (JsonObject) childNodes.get(j);
-                        long hash  = Long.parseLong(child.get("recordHash").getAsString());
-                        ids[j] = convertHash(hash);
+                        long[] ids = new long[childNodes.size()];
+                        for (int j = 0; j < childNodes.size(); j++) {
+                            JsonObject child = (JsonObject) childNodes.get(j);
+                            long hash = Long.parseLong(child.get("recordHash").getAsString());
+                            ids[j] = convertHash(hash);
+                        }
+                        childIdMap.put(name, ids);
+                    } catch (Exception e){
+                        return;
                     }
-                    childIdMap.put(name, ids);
                 }
             }).start();
         }

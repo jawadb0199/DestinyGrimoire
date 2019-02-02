@@ -28,11 +28,15 @@ public class LoreFragment extends Fragment{
         Thread getLore = new Thread(new Runnable(){
             @Override
             public void run(){
-                ArrayList<Long> args = new ArrayList<>();
-                args.add(info.getLoreId());
-                LoreDefinition loreDefinition = database.getDao().getLoreById(args).get(0);
-                String text = loreDefinition.getJson().getAsJsonObject("displayProperties").get("description").getAsString();
-                loreText.setText(text);
+                try {
+                    ArrayList<Long> args = new ArrayList<>();
+                    args.add(info.getLoreId());
+                    LoreDefinition loreDefinition = database.getDao().getLoreById(args).get(0);
+                    String text = loreDefinition.getJson().getAsJsonObject("displayProperties").get("description").getAsString();
+                    loreText.setText(text);
+                } catch (Exception e){
+                    return;
+                }
             }
         });
         getLore.start();
