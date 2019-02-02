@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -73,12 +72,9 @@ public class LoreRecordsActivity extends AppCompatActivity{
         }
 
         long[] nodes = bookMap.get(name);
-//        long[] nodes = {1582800871L, -1232389968L};
-//        String[] nodeIds = {"'1582800871'", "'-1232389968'"};
         final ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
         final ArrayList<Long> nodeId = new ArrayList<>(1);
         nodeId.add(0L);
-        Log.i("Theme: ", name);
 
         for(int i = 0; i < nodes.length; i++){
             nodeId.set(0, nodes[i]);
@@ -93,8 +89,6 @@ public class LoreRecordsActivity extends AppCompatActivity{
                     }
                     int bookImg = getImageResource(bookName);
                     presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
-
-                    Log.i("Book: ", bookName);
                 }
             });
             t.start();
@@ -105,16 +99,6 @@ public class LoreRecordsActivity extends AppCompatActivity{
             }
 
         }
-
-        // FIXME SQL exception: syntax error near ',' when list > 1
-//        long[] nodeIds = bookMap.get(name);
-//        List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeIds);
-//
-//        for(PresentationNodeDefinition n: list){
-//            JsonObject json = n.getJson();
-//            String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
-//            Log.i("Book: ", bookName);
-//        }
 
         presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeInfoList, getFragmentManager());
         recyclerView.setAdapter(presentationNodeAdapter);

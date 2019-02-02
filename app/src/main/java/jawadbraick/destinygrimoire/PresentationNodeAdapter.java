@@ -4,7 +4,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -85,7 +83,6 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
             frag.setRecordIds(childIdMap.get(name));
             FragmentTransaction transaction = fm.beginTransaction();
             transaction.add(R.id.loreRecordsActivity, frag, "RecordsFragment").addToBackStack(null).commit();
-            Log.i("onClickChildRecords: ", Arrays.toString(childIdMap.get(name)));
         }
     }
 

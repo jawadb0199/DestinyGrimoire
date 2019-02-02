@@ -1,7 +1,5 @@
 package jawadbraick.destinygrimoire;
 
-import android.util.Log;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -85,7 +83,6 @@ public class GrimoireContainer{
 
 
     private JsonObject getJsonObjectFromArray(JsonArray array, String key, String value){
-        Log.d("JSONARRAY", array.toString());
         for (JsonElement e: array) {
             JsonObject json = e.getAsJsonObject();
             if (json.get(key).getAsString().equals(value)){

@@ -3,7 +3,6 @@ package jawadbraick.destinygrimoire;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +66,6 @@ public class PagesAdapter extends BaseAdapter{
         int width =  (parent.getWidth()-spacing)/3;
         view.imageButtonPage.setImageBitmap(reduceImage(imgID, width));
         view.imageButtonPage.setTag(name);
-
-        Log.d("GRID SOURCE", view.imageButtonPage.getDrawable().toString());
 
         return convertView;
     }

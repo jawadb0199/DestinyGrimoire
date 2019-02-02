@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +84,6 @@ public class GridViewAdapter extends BaseAdapter{
             view.imageButtonPage.setImageBitmap(reduceImage(imgID, width));
             view.imageButtonPage.setTag(cardIdList.get(position));
         }
-        Log.d("GRID SOURCE", view.imageButtonPage.getDrawable().toString());
 
         return convertView;
     }
