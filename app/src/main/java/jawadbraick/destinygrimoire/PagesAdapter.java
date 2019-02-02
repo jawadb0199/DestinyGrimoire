@@ -16,6 +16,7 @@ import java.util.List;
 public class PagesAdapter extends BaseAdapter{
     private List<String> pageNameList;
     private Activity activity;
+    private final int spacing = 40;
 
     public PagesAdapter(Activity activity, List<String> pageNameList) {
         this.pageNameList = pageNameList;
@@ -63,7 +64,8 @@ public class PagesAdapter extends BaseAdapter{
         view.pageText.setText(name);
         int imgID = getImage(name);
 
-        view.imageButtonPage.setImageBitmap(reduceImage(imgID));
+        int width =  (parent.getWidth()-spacing)/3;
+        view.imageButtonPage.setImageBitmap(reduceImage(imgID, width));
         view.imageButtonPage.setTag(name);
 
         Log.d("GRID SOURCE", view.imageButtonPage.getDrawable().toString());
@@ -71,11 +73,35 @@ public class PagesAdapter extends BaseAdapter{
         return convertView;
     }
 
-    private Bitmap reduceImage(int id){
+    private Bitmap reduceImage(int id, int reqWidth){
         BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(activity.getResources(), id, options);
+
+        boolean tabletSize = activity.getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
+            options.inSampleSize = calculateInSampleSize(options, reqWidth);
+        } else {
+            options.inSampleSize = 5;
+        }
+
         options.inJustDecodeBounds = false;
-        options.inSampleSize = 3;
         return BitmapFactory.decodeResource(activity.getResources(), id, options);
+    }
+
+    private int calculateInSampleSize(BitmapFactory.Options options, int reqWidth){
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (width > reqWidth) {
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((width / inSampleSize) >= reqWidth) {
+                inSampleSize++;
+            }
+        }
+
+        return inSampleSize-1;
     }
 
     private int getImage(String name){

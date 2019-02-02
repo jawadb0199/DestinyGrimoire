@@ -5,4 +5,5 @@
     <attr name="tintColor" format="color"/>
     <attr name="textBackground" format="color"/>
     <attr name="loreBackground" format="color"/>
+    <bool name="isTablet">false</bool>
 </resources>
