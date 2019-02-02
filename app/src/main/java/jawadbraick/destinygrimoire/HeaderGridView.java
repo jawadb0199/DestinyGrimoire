@@ -16,7 +16,6 @@ package jawadbraick.destinygrimoire;
  * limitations under the License.
  */
 
-import android.widget.GridView;
 import android.content.Context;
 import android.database.DataSetObservable;
 import android.database.DataSetObserver;
@@ -28,9 +27,10 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.FrameLayout;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.WrapperListAdapter;
+
 import java.util.ArrayList;
 /**
  * A {@link GridView} that supports adding header rows in a
