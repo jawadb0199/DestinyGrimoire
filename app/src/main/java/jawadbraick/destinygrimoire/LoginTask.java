@@ -10,9 +10,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, JsonObject>{
     private static final String API_KEY = "7ae277d2af4849e6831211ac28001a06";
@@ -30,7 +32,15 @@ public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, Jso
             con.setRequestMethod("GET");
             con.setRequestProperty("x-api-key", API_KEY);
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            InputStream input;
+            try{
+                input = con.getInputStream();
+            } catch (UnknownHostException u){
+                JsonObject jsonError =  new JsonObject();
+                jsonError.addProperty("ErrorCode", "No Internet Connection");
+                return jsonError;
+            }
+            BufferedReader in = new BufferedReader(new InputStreamReader(input));
             String inputLine;
             StringBuilder response = new StringBuilder();
 
@@ -55,7 +65,14 @@ public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, Jso
             con.setRequestMethod("GET");
             con.setRequestProperty("x-api-key", API_KEY);
 
-            in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            try{
+                input = con.getInputStream();
+            } catch (UnknownHostException u){
+                JsonObject jsonError =  new JsonObject();
+                jsonError.addProperty("ErrorCode", "No Internet Connection");
+                return jsonError;
+            }
+            in = new BufferedReader(new InputStreamReader(input));
 
             response = new StringBuilder();
 
@@ -76,10 +93,17 @@ public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, Jso
 
     @Override
     protected void onPostExecute(JsonObject json){
-        if (json == null || !(json.get("ErrorCode").toString().equals("1"))) {
+        if (json == null){
+            Toast.makeText(context, "Couldn't Get Grimoire Information", Toast.LENGTH_LONG).show();
+            return;
+        } else if(json.get("ErrorCode").toString().equals("\"No Internet Connection\"")){
+            Toast.makeText(context, "No Internet Connection", Toast.LENGTH_LONG).show();
+            return;
+        } else if (!(json.get("ErrorCode").toString().equals("1"))) {
             Toast.makeText(context, "Incorrect Username or Platform", Toast.LENGTH_LONG).show();
             return;
         }
+
         json = json.getAsJsonObject("Response").getAsJsonObject("data");
         String score = json.get("score").toString();
         SharedPreferences sharedPreferences = context.getSharedPreferences("userData", Context.MODE_PRIVATE);
