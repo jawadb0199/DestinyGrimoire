@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,7 +138,6 @@ public class Cards extends AppCompatActivity{
         }
         grimoire.setCard(cardId);
 
-        Log.d("CARDJSON", grimoire.getCardJson().toString());
         Intent i = new Intent(Cards.this, DisplayCard.class);
         startActivity(i);
     }

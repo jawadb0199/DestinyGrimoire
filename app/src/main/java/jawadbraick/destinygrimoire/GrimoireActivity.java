@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -89,15 +88,11 @@ public class GrimoireActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.d("GRIMOIRE JSON PARSE", "Pre-Parse");
 
             JsonObject json = new JsonParser().parse(sb.toString()).getAsJsonObject();
             JsonArray themeCollection = json.getAsJsonObject("Response").getAsJsonArray("themeCollection");
-            Log.d("GRIMOIRE JSON PARSE", "Parce Successful");
 
             GrimoireContainer.getObject().setThemeCollection(themeCollection);
-
-            Log.d("GRIMOIRE JSON PARSE", "ThemeCollection set");
         }
     }
 }
