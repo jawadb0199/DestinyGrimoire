@@ -59,49 +59,54 @@ public class LoreRecordsActivity extends AppCompatActivity{
     }
 
     public void showBooks(View view){
-        prevView.setBackgroundTintList(null);
-        prevView = (ImageButton) view;
-        view.setBackgroundTintList(getResources().getColorStateList(R.color.darkTint));
+        try{
+            prevView.setBackgroundTintList(null);
+            prevView = (ImageButton) view;
+            view.setBackgroundTintList(getResources().getColorStateList(R.color.darkTint));
 
-        String name = view.getTag().toString();
+            String name = view.getTag().toString();
 
-        try {
-            getNodeChildrenThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        long[] nodes = bookMap.get(name);
-        final ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
-        final ArrayList<Long> nodeId = new ArrayList<>(1);
-        nodeId.add(0L);
-
-        for(int i = 0; i < nodes.length; i++){
-            nodeId.set(0, nodes[i]);
-            Thread t = new Thread(new Runnable(){
-                @Override
-                public void run(){
-                    List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
-                    JsonObject json = list.get(0).getJson();
-                    String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
-                    if(bookName.equals("Classified")){
-                        return;
-                    }
-                    int bookImg = getImageResource(bookName);
-                    presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
-                }
-            });
-            t.start();
             try {
-                t.join();
+                getNodeChildrenThread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-        }
+            long[] nodes = bookMap.get(name);
+            final ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
+            final ArrayList<Long> nodeId = new ArrayList<>(1);
+            nodeId.add(0L);
 
-        presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeInfoList, getFragmentManager());
-        recyclerView.setAdapter(presentationNodeAdapter);
+            for(int i = 0; i < nodes.length; i++){
+                nodeId.set(0, nodes[i]);
+                Thread t = new Thread(new Runnable(){
+                    @Override
+                    public void run(){
+                        List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
+                        JsonObject json = list.get(0).getJson();
+                        String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+                        if(bookName.equals("Classified")){
+                            return;
+                        }
+                        int bookImg = getImageResource(bookName);
+                        presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
+                    }
+                });
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeInfoList, getFragmentManager());
+            recyclerView.setAdapter(presentationNodeAdapter);
+
+        } catch (Exception e){
+            return;
+        }
 
     }
 
@@ -130,18 +135,22 @@ public class LoreRecordsActivity extends AppCompatActivity{
         }
         @Override
         public void run(){
-            for(String name: names){
-                PresentationNodeDefinition light = database.getDao().getPresentationNodeByText("%" + name + "%").get(0);
-                JsonObject json = light.getJson();
-                JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("presentationNodes");
+            try {
+                for (String name : names) {
+                    PresentationNodeDefinition light = database.getDao().getPresentationNodeByText("%" + name + "%").get(0);
+                    JsonObject json = light.getJson();
+                    JsonArray childNodes = json.getAsJsonObject("children").getAsJsonArray("presentationNodes");
 
-                long[] ids = new long[childNodes.size()];
-                for(int i = 0; i < childNodes.size(); i++){
-                    JsonObject child = (JsonObject) childNodes.get(i);
-                    long hash  = Long.parseLong(child.get("presentationNodeHash").getAsString());
-                    ids[i] = convertHash(hash);
+                    long[] ids = new long[childNodes.size()];
+                    for (int i = 0; i < childNodes.size(); i++) {
+                        JsonObject child = (JsonObject) childNodes.get(i);
+                        long hash = Long.parseLong(child.get("presentationNodeHash").getAsString());
+                        ids[i] = convertHash(hash);
+                    }
+                    bookMap.put(name, ids);
                 }
-                bookMap.put(name, ids);
+            } catch (Exception e){
+                return;
             }
         }
     }
