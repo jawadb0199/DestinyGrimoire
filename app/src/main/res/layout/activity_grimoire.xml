@@ -31,8 +31,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/username"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.6" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/username"
@@ -43,6 +42,8 @@
                 android:ems="10"
                 android:hint=" Username"
                 android:textSize="25sp"
+                android:textColorHint="@color/darkBackground"
+                android:textColor="@color/darkBackground"
                 app:layout_constraintBottom_toTopOf="@+id/grimoireTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,6 @@
                 android:layout_marginEnd="110dp"
                 android:layout_marginStart="110dp"
                 android:layout_marginTop="10dp"
-                android:baselineAligned="false"
                 android:weightSum="2"
                 android:maxHeight="20dp"
                 android:orientation="horizontal"
@@ -67,13 +67,12 @@
 
                 <ImageButton
                     android:id="@+id/psButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:background="@color/darkBackground"
-                    android:baselineAlignBottom="true"
                     android:cropToPadding="true"
                     android:onClick="login"
                     android:scaleType="centerCrop"
@@ -81,13 +80,12 @@
 
                 <ImageButton
                     android:id="@+id/xboxButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:background="@color/darkBackground"
-                    android:baselineAlignBottom="true"
                     android:cropToPadding="true"
                     android:fitsSystemWindows="false"
                     android:onClick="login"
