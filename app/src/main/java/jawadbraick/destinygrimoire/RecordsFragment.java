@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 
@@ -36,19 +37,25 @@ public class RecordsFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_records, container, false);
 
-        ImageView icon = (ImageView) view.findViewById(R.id.bookIcon);
-        iconId = getImageResource(name);
-        icon.setImageResource(iconId);
+        try {
 
-        TextView header = (TextView) view.findViewById(R.id.bookNameText);
-        header.setText(name);
+            ImageView icon = (ImageView) view.findViewById(R.id.bookIcon);
+            iconId = getImageResource(name);
+            icon.setImageResource(iconId);
 
-        recyclerView = view.findViewById(R.id.recordList);
-        recordAdapter = new RecordAdapter(getActivity(), createRecordInfoList(), getFragmentManager());
-        recyclerView.setAdapter(recordAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            TextView header = (TextView) view.findViewById(R.id.bookNameText);
+            header.setText(name);
 
-        return view;
+            recyclerView = view.findViewById(R.id.recordList);
+            recordAdapter = new RecordAdapter(getActivity(), createRecordInfoList(), getFragmentManager());
+            recyclerView.setAdapter(recordAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+            return view;
+        } catch (Exception e){
+            Toast.makeText(getActivity(), "Error Loading Records", Toast.LENGTH_LONG).show();
+            return view;
+        }
     }
 
     public void setName(String name){
@@ -83,7 +90,7 @@ public class RecordsFragment extends Fragment{
 
                         recordInfoList.set(index - 1, new RecordInfo(iconId, name, loreName, loreId));
                     } catch (Exception e){
-                        return;
+                        Toast.makeText(getActivity(), "Error accessing database", Toast.LENGTH_LONG).show();
                     }
 
                 }
