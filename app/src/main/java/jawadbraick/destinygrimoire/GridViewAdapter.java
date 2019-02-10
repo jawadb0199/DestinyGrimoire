@@ -97,7 +97,7 @@ public class GridViewAdapter extends BaseAdapter{
         if (tabletSize) {
             options.inSampleSize = calculateInSampleSize(options, reqWidth);
         } else {
-            options.inSampleSize = 5;
+            options.inSampleSize = 4;
         }
 
         options.inJustDecodeBounds = false;
