@@ -164,7 +164,7 @@ public class Cards extends AppCompatActivity{
             if (letter >= 'A' && letter <= 'Z'){
                 String letterStr = ""+letter;
                 System.out.print(letterStr);
-                String replace = " " + letterStr;
+                String replace = "" + letterStr;
                 System.out.println(replace);
                 str = str.replace(letterStr, replace);
                 i++;
