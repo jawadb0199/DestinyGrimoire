@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -105,7 +106,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
             recyclerView.setAdapter(presentationNodeAdapter);
 
         } catch (Exception e){
-            return;
+            Toast.makeText(this, "Error Loading Books", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -150,7 +151,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
                     bookMap.put(name, ids);
                 }
             } catch (Exception e){
-                return;
+                Toast.makeText(LoreRecordsActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
             }
         }
     }
