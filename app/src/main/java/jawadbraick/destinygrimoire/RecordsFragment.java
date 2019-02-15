@@ -75,6 +75,7 @@ public class RecordsFragment extends Fragment{
         for(int i = 1; i < recordIds.length; i++){
             final int index = i;
             final long id = recordIds[i];
+
             new Thread(getRecordInfo, new Runnable(){
                 @Override
                 public void run(){
@@ -88,8 +89,15 @@ public class RecordsFragment extends Fragment{
                         long loreId = convertHash(json.get("loreHash").getAsLong());
 
                         recordInfoList.set(index - 1, new RecordInfo(iconId, name, loreName, loreId));
+
                     } catch (Exception e){
-                        Toast.makeText(getActivity(), "Error accessing database", Toast.LENGTH_LONG).show();
+
+                        getActivity().runOnUiThread(new Runnable(){
+                            @Override
+                            public void run(){
+                                Toast.makeText(getActivity(), "Error accessing database", Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
 
                 }
@@ -103,6 +111,7 @@ public class RecordsFragment extends Fragment{
                 e.printStackTrace();
             }
         }
+
         if(name.equals("Marasenna")){
             recordInfoList.add(new RecordInfo(iconId, name, "Palingenesis III", 445714340));
         } else if(name.equals("The Awoken of the Reef")){

@@ -34,43 +34,49 @@ public class Cards extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cards);
+        try {
+            Toast.makeText(this, "Error Loading Grimoire Cards", Toast.LENGTH_LONG).show();
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_cards);
 
-        grimoire = GrimoireContainer.getObject();
-        cardCollection = grimoire.getCardCollection();
-        userCardCollection = grimoire.getUserCardCollection();
+            grimoire = GrimoireContainer.getObject();
+            cardCollection = grimoire.getCardCollection();
+            userCardCollection = grimoire.getUserCardCollection();
 
-        // Set custom adapter to gridview
-        gridView = (HeaderGridView) findViewById(R.id.gridview);
+            // Set custom adapter to gridview
+            gridView = (HeaderGridView) findViewById(R.id.gridview);
 
-        LayoutInflater inflater = this.getLayoutInflater();
-        LinearLayout header = (LinearLayout) inflater.inflate(R.layout.gridview_header, null);
+            LayoutInflater inflater = this.getLayoutInflater();
+            LinearLayout header = (LinearLayout) inflater.inflate(R.layout.gridview_header, null);
 
-        String pageName = getIntent().getStringExtra("pageTag");
-        pageName = pageName.charAt(0) + fromCamelCase(pageName.substring(1));
+            String pageName = getIntent().getStringExtra("pageTag");
+            pageName = pageName.charAt(0) + fromCamelCase(pageName.substring(1));
 
-        TextView label = (TextView) header.getChildAt(1);
-        label.setText(pageName);
+            TextView label = (TextView) header.getChildAt(1);
+            label.setText(pageName);
 
-        TextView score = (TextView) ((ViewGroup) header.getChildAt(2)).getChildAt(0);
-        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
-        score.setText(sharedPreferences.getString("score", ""));
+            TextView score = (TextView) ((ViewGroup) header.getChildAt(2)).getChildAt(0);
+            SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+            score.setText(sharedPreferences.getString("score", ""));
 
 
-        if (userCardCollection == null){
-            createCardLists();
-            mAdapter = new GridViewAdapter(this, cardIdList, cardNameList);
-            CheckBox toggle = (CheckBox) header.getChildAt(0);
-            toggle.setVisibility(View.INVISIBLE);
-            toggle.setText("");
-        } else {
-            createUserCardLists();
-            mAdapter = new GridViewAdapter(this, userCardIdList, userCardNameList);
+            if (userCardCollection == null) {
+                createCardLists();
+                mAdapter = new GridViewAdapter(this, cardIdList, cardNameList);
+                CheckBox toggle = (CheckBox) header.getChildAt(0);
+                toggle.setVisibility(View.INVISIBLE);
+                toggle.setText("");
+            } else {
+                createUserCardLists();
+                mAdapter = new GridViewAdapter(this, userCardIdList, userCardNameList);
+            }
+
+            gridView.addHeaderView(header);
+            gridView.setAdapter(mAdapter);
+
+        } catch (Exception e){
+            Toast.makeText(this, "Error Loading Grimoire Cards", Toast.LENGTH_LONG).show();
         }
-
-        gridView.addHeaderView(header);
-        gridView.setAdapter(mAdapter);
 
     }
 
