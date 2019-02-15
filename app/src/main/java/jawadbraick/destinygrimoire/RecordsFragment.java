@@ -67,8 +67,7 @@ public class RecordsFragment extends Fragment{
     }
 
     private List<RecordInfo> createRecordInfoList(){
-        RecordInfo[] temp = new RecordInfo[recordIds.length-1];
-        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(temp));
+        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(new RecordInfo[recordIds.length-1]));
         Collections.synchronizedList(recordInfoList);
 
         ThreadGroup getRecordInfo = new ThreadGroup("getRecordInfo");
@@ -103,6 +102,11 @@ public class RecordsFragment extends Fragment{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+        if(name.equals("Marasenna")){
+            recordInfoList.add(new RecordInfo(iconId, name, "Palingenesis III", 445714340));
+        } else if(name.equals("The Awoken of the Reef")){
+            recordInfoList.add(0, new RecordInfo(iconId, name, "Revanche I", 445714341));
         }
 
         return recordInfoList;
