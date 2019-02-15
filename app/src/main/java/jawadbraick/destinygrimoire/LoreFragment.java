@@ -25,8 +25,6 @@ public class LoreFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_lore, container, false);
         try {
-
-
             final TextView loreText = view.findViewById(R.id.loreText);
             final Thread getLore = new Thread(new Runnable(){
                 @Override
@@ -37,8 +35,14 @@ public class LoreFragment extends Fragment{
                         LoreDefinition loreDefinition = database.getDao().getLoreById(args).get(0);
                         String text = loreDefinition.getJson().getAsJsonObject("displayProperties").get("description").getAsString();
                         loreText.setText(text);
+
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "Error accessing database", Toast.LENGTH_LONG).show();
+                        getActivity().runOnUiThread(new Runnable(){
+                            @Override
+                            public void run(){
+                                Toast.makeText(getActivity(), "Error accessing database", Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 }
             });
