@@ -33,9 +33,8 @@ public class Cards extends AppCompatActivity{
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         try {
-            Toast.makeText(this, "Error Loading Grimoire Cards", Toast.LENGTH_LONG).show();
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_cards);
 

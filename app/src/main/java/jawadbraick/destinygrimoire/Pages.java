@@ -22,7 +22,6 @@ public class Pages extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         try {
-            Toast.makeText(this, "Error Loading Grimoire Pages", Toast.LENGTH_LONG).show();
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_pages);
 
