@@ -25,8 +25,6 @@ public class GrimoireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grimoire);
 
-        new Thread(new parseGrimoire()).start();
-
     }
 
     public void viewGrimoire(View view){
@@ -50,20 +48,20 @@ public class GrimoireActivity extends AppCompatActivity {
         EditText usernameText = (EditText) findViewById(R.id.username);
         String username = usernameText.getText().toString();
         usernameText.getText().clear();
-        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        SharedPreferences.Editor editor = getSharedPreferences("userData", Context.MODE_PRIVATE).edit();
+        editor.putString("username", username);
+        editor.apply();
 
         if (view.getId() == R.id.psButton){
             new LoginTask(this).execute(new LoginTaskWrapper(username, 2));
             editor.putInt("platform", 2);
-            editor.commit();
+            editor.apply();
         } else {
             new LoginTask(this).execute(new LoginTaskWrapper(username, 1));
             editor.putInt("platform", 1);
-            editor.commit();
+            editor.apply();
         }
-        editor.putString("username", username);
-        editor.commit();
 
     }
 

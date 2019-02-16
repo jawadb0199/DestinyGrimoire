@@ -93,6 +93,12 @@ public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, Jso
 
     @Override
     protected void onPostExecute(JsonObject json){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("userData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String username = sharedPreferences.getString("username", "");
+        editor.putString("username", "");
+        editor.apply();
+
         if (json == null){
             Toast.makeText(context, "Couldn't Get Grimoire Information", Toast.LENGTH_LONG).show();
             return;
@@ -106,9 +112,11 @@ public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, Jso
 
         json = json.getAsJsonObject("Response").getAsJsonObject("data");
         String score = json.get("score").toString();
-        SharedPreferences sharedPreferences = context.getSharedPreferences("userData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         GrimoireContainer.getObject().setUserCardCollection(json.getAsJsonArray("cardCollection"));
+
+        editor.putString("username", username);
+        editor.apply();
+
         editor.putString("score", score);
         editor.commit();
 
