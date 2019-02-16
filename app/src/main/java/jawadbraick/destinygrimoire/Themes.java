@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 
@@ -20,31 +21,51 @@ public class Themes extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE );
+        String score = getSharedPreferences("userData", Context.MODE_PRIVATE ).getString("score", "");
 
-        TextView scoreText = findViewById(R.id.score);
-        scoreText.setText(sharedPreferences.getString("score", ""));
+        if(!score.isEmpty()){
+            TextView scoreText = findViewById(R.id.score);
+            scoreText.setText(score);
+            findViewById(R.id.buffer).setVisibility(View.GONE);
+            findViewById(R.id.signOutButton).setVisibility(View.VISIBLE);
+        }
 
     }
 
     public void openPages(View view){
-        String theme = capitalize(view.getTag().toString());
+        try {
+            String theme = capitalize(view.getTag().toString());
 
-        GrimoireContainer grimoire = GrimoireContainer.getObject();
-        while (grimoire.getThemeCollection() == null){
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             grimoire = GrimoireContainer.getObject();
+            while (grimoire.getThemeCollection() == null) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                grimoire = GrimoireContainer.getObject();
+            }
+            grimoire.setTheme(theme);
+
+            Intent i = new Intent(Themes.this, Pages.class);
+            String themeTag = view.getTag().toString();
+            i.putExtra("themeTag", themeTag);
+
+            startActivity(i);
+        } catch (Exception e){
+            Toast.makeText(this, "Error Opening Grimoire Theme", Context.MODE_PRIVATE).show();
         }
-        grimoire.setTheme(theme);
+    }
 
-        Intent i = new Intent(Themes.this, Pages.class);
-        String themeTag = view.getTag().toString();
-        i.putExtra("themeTag",themeTag);
+    public void signOut(View view){
+        SharedPreferences.Editor editor = getSharedPreferences("userData", Context.MODE_PRIVATE ).edit();
+        editor.putInt("platform", -1);
+        editor.putString("username", "");
+        editor.putString("score", "");
+        editor.apply();
 
+        Intent i = new Intent(Themes.this, GrimoireActivity.class);
+        Themes.this.finish();
         startActivity(i);
     }
 
