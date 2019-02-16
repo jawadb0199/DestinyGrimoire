@@ -35,7 +35,18 @@ local.properties
 .idea/modules.xml
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
+/.idea/caches/build_file_checksums.ser
 *.iml
+
+# Release Apk
+app/release/
+
+# Test Classes
+app/src/androidTest
+app/src/test/
+
+# Release key
+DestinyGrimoire-Key
 
 # OS-specific files
 .DS_Store
