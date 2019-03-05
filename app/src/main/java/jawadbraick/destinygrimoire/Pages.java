@@ -28,7 +28,16 @@ public class Pages extends AppCompatActivity{
             Thread t = new Thread(new Runnable(){
                 @Override
                 public void run(){
-                    adapterList = createList();
+                    try {
+                        adapterList = createList();
+                    } catch (Exception e){
+                        runOnUiThread(new Runnable(){
+                            @Override
+                            public void run(){
+                                Toast.makeText(Pages.this, "Error Loading Grimoire Pages", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
                 }
             });
             t.start();
