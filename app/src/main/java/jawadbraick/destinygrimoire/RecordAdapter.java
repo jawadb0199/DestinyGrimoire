@@ -68,15 +68,6 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
             transaction.add(R.id.loreRecordsActivity, frag, "LoreFragment").addToBackStack(null).commit();
         }
     }
-
-    private long convertHash(long hash){
-        final long offset = 4294967296L;
-        if ((hash & (offset / 2)) != 0) {
-            return hash - offset;
-        } else {
-            return hash;
-        }
-    }
 }
 
 

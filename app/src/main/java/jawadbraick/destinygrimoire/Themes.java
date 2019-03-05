@@ -9,11 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonArray;
-
 public class Themes extends AppCompatActivity{
-    private Thread parseGrimoireThread;
-    private JsonArray themeCollection;
     private GrimoireContainer grimoire;
 
     @Override
