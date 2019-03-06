@@ -20,13 +20,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class RecordsFragment extends Fragment{
-    RecyclerView recyclerView;
-    RecordAdapter recordAdapter;
-    ManifestDatabase database;
+    private RecyclerView recyclerView;
+    private RecordAdapter recordAdapter;
+    private ManifestDatabase database;
 
-    String name;
-    int iconId;
-    long[] recordIds;
+    private String name;
+    private int iconId;
+    private long[] recordIds;
 
     public RecordsFragment(){
         database = ManifestDatabase.getInstance(getActivity());
