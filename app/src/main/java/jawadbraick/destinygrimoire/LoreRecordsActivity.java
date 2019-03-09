@@ -32,6 +32,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         database = ManifestDatabase.getInstance(this);
+
         getNodeChildrenThread = new NodeChildrenThread(NODE_NAMES);
         getNodeChildrenThread.start();
 
@@ -83,14 +84,23 @@ public class LoreRecordsActivity extends AppCompatActivity{
                 Thread t = new Thread(new Runnable(){
                     @Override
                     public void run(){
-                        List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
-                        JsonObject json = list.get(0).getJson();
-                        String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
-                        if(bookName.equals("Classified")){
-                            return;
+                        try {
+                            List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
+                            JsonObject json = list.get(0).getJson();
+                            String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+                            if (bookName.equals("Classified")) {
+                                return;
+                            }
+                            int bookImg = getImageResource(bookName);
+                            presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
+                        } catch (Exception e){
+                            runOnUiThread(new Runnable(){
+                                @Override
+                                public void run(){
+                                    Toast.makeText(LoreRecordsActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
-                        int bookImg = getImageResource(bookName);
-                        presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
                     }
                 });
                 t.start();
@@ -151,7 +161,12 @@ public class LoreRecordsActivity extends AppCompatActivity{
                     bookMap.put(name, ids);
                 }
             } catch (Exception e){
-                Toast.makeText(LoreRecordsActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
+                runOnUiThread(new Runnable(){
+                    @Override
+                    public void run(){
+                        Toast.makeText(LoreRecordsActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         }
     }

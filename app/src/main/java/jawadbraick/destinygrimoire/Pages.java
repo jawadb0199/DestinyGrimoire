@@ -28,16 +28,7 @@ public class Pages extends AppCompatActivity{
             Thread t = new Thread(new Runnable(){
                 @Override
                 public void run(){
-                    try {
-                        adapterList = createList();
-                    } catch (Exception e){
-                        runOnUiThread(new Runnable(){
-                            @Override
-                            public void run(){
-                                Toast.makeText(Pages.this, "Error Loading Grimoire Pages", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
+                    adapterList = createList();
                 }
             });
             t.start();
@@ -70,17 +61,31 @@ public class Pages extends AppCompatActivity{
     }
 
     private List<String> createList(){
-        JsonArray pageCollection = grimoire.getPageCollection();
         ArrayList<String> pageNameList = new ArrayList<>();
+        try {
+            JsonArray pageCollection = grimoire.getPageCollection();
 
-        for(int i = 0; i < pageCollection.size(); i++){
-            JsonObject page = (JsonObject) pageCollection.get(i);
+            for(int i = 0; i < pageCollection.size(); i++){
+                JsonObject page = (JsonObject) pageCollection.get(i);
 
-            String name = page.get("pageName").getAsString();
-            pageNameList.add(name);
+                String name = page.get("pageName").getAsString();
+                pageNameList.add(name);
+            }
+
+            return pageNameList;
+
+        }  catch (Exception e){
+            runOnUiThread(new Runnable(){
+                @Override
+                public void run(){
+                    Toast.makeText(Pages.this, "Error Loading Grimoire Pages", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            return pageNameList;
         }
 
-        return pageNameList;
+
     }
 
     public void showCard(View view){
