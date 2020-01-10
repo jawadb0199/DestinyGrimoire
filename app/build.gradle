@@ -6,8 +6,8 @@ android {
         applicationId "jawadbraick.destinygrimoire"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 8
-        versionName "1.8"
+        versionCode 9
+        versionName "1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
