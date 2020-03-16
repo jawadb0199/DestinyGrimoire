@@ -88,7 +88,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
                             List<PresentationNodeDefinition> list = database.getDao().getPresentationNodeById(nodeId);
                             JsonObject json = list.get(0).getJson();
                             String bookName = json.getAsJsonObject("displayProperties").get("name").getAsString();
-                            if (bookName.equals("Classified")) {
+                            if (bookName.equals("Classified") || bookName.isEmpty()) {
                                 return;
                             }
                             int bookImg = getImageResource(bookName);
