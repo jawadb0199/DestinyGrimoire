@@ -23,7 +23,7 @@
         <item name="backgroundColor">#141414</item>
         <item name="tintColor">#3D3D3D</item>
         <item name="textBackground">#141414</item>
-        <item name="loreBackground">#5E6163</item>
+        <item name="loreBackground">#141414</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
