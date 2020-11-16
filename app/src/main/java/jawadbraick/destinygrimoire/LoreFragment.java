@@ -79,7 +79,7 @@ public class LoreFragment extends Fragment{
         return getImageResource(name);
     }
     private int getImageResource(String name){
-        String fileName = name.replaceAll("[^a-zA-Z0-9_ ]", "").replaceAll(" ", "_").toLowerCase();
+        String fileName = name.replaceAll("[ -]+", "_").replaceAll("[^a-zA-Z0-9_]", "").toLowerCase();
         return getResources().getIdentifier(fileName, "drawable", getActivity().getPackageName());
     }
 

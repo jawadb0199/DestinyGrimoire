@@ -182,7 +182,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
 
     private int getImageResource(String name){
         Resources resources = this.getResources();
-        String fileName = name.replaceAll("[^a-zA-Z0-9 ]", "").replaceAll(" ", "_").toLowerCase();
+        String fileName = name.replaceAll("[ -]+", "_").replaceAll("[^a-zA-Z0-9_]", "").toLowerCase();
         return resources.getIdentifier(fileName, "drawable", this.getPackageName());
     }
 }

@@ -132,7 +132,7 @@ public class RecordsFragment extends Fragment{
     }
 
     private int getImageResource(String name){
-        String fileName = name.replaceAll("[^a-zA-Z0-9 ]", "").replaceAll(" ", "_").toLowerCase();
+        String fileName = name.replaceAll("[ -]+", "_").replaceAll("[^a-zA-Z0-9_]", "").toLowerCase();
         return getResources().getIdentifier(fileName, "drawable", getActivity().getPackageName());
     }
 }
