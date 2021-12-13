@@ -75,7 +75,7 @@ public class GridViewAdapter extends BaseAdapter{
 
 
 
-        if (cardIdList.get(position).equals("grimoire_cover")){
+        if (cardIdList.get(position).equals("blank")){
             view.imageButtonPage.setTag("");
             view.imageButtonPage.setImageResource(imgID);
         } else {

@@ -9,7 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/left_guideline"
-        app:layout_constraintGuide_percent=".052"
+        app:layout_constraintGuide_percent=".056"
+        android:orientation="vertical"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_guideline"
+        app:layout_constraintGuide_percent=".95"
         android:orientation="vertical"/>
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -27,23 +33,23 @@
         android:background="@color/darkBackground"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
-        android:src="@drawable/icon"
+        android:src="@drawable/blank"
         android:onClick="showCard"/>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_weight="1"
         android:fontFamily="sans-serif"
         android:singleLine="true"
         android:text="Classes"
-        android:textAlignment="center"
         android:textColor="@color/lightText"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
-        app:layout_constraintLeft_toLeftOf="@id/left_guideline"/>
+        app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+        app:layout_constraintRight_toRightOf="@id/right_guideline"/>
 </android.support.constraint.ConstraintLayout>
 <!--<RelativeLayout-->
     <!--xmlns:android="http://schemas.android.com/apk/res/android"-->

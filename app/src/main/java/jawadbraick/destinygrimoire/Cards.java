@@ -101,7 +101,7 @@ public class Cards extends AppCompatActivity{
             }
         }
         for (int i = userCardIdList.size(); i < cardCollection.size(); i++) {
-            userCardIdList.add("grimoire_cover");
+            userCardIdList.add("blank");
             userCardNameList.add("");
         }
 

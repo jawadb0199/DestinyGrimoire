@@ -67,12 +67,12 @@ public class RecordsFragment extends Fragment{
     }
 
     private List<RecordInfo> createRecordInfoList(){
-        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(new RecordInfo[recordIds.length-1]));
+        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(new RecordInfo[recordIds.length]));
         Collections.synchronizedList(recordInfoList);
 
         ThreadGroup getRecordInfo = new ThreadGroup("getRecordInfo");
 
-        for(int i = 1; i < recordIds.length; i++){
+        for(int i = 0; i < recordIds.length; i++){
             final int index = i;
             final long id = recordIds[i];
 
@@ -86,16 +86,20 @@ public class RecordsFragment extends Fragment{
                         JsonObject json = record.getJson();
 
                         String loreName = json.getAsJsonObject("displayProperties").get("name").getAsString();
+                        if (json.get("loreHash") == null) {
+                            recordInfoList.set(index, null);
+                            return;
+                        }
                         long loreId = convertHash(json.get("loreHash").getAsLong());
 
-                        recordInfoList.set(index - 1, new RecordInfo(iconId, name, loreName, loreId));
+                        recordInfoList.set(index, new RecordInfo(iconId, name, loreName, loreId));
 
                     } catch (Exception e){
 
                         getActivity().runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
-                                Toast.makeText(getActivity(), "Error accessing database", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "Error accessing Record database", Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -112,10 +116,12 @@ public class RecordsFragment extends Fragment{
             }
         }
 
-        if(name.equals("Marasenna")){
-            recordInfoList.add(new RecordInfo(iconId, name, "Palingenesis III", 445714340));
-        } else if(name.equals("The Awoken of the Reef")){
-            recordInfoList.add(0, new RecordInfo(iconId, name, "Revanche I", 445714341));
+        if (recordInfoList.get(0) == null) {
+            recordInfoList.remove(0);
+        }
+
+        if(name.equals("Wall of Wishes")){
+            recordInfoList.add(new RecordInfo(iconId, name, "Fifteenth Wish", 1646244851));
         }
 
         return recordInfoList;
