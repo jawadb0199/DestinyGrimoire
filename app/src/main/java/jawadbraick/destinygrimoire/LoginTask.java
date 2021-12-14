@@ -121,6 +121,9 @@ public class LoginTask extends AsyncTask<LoginTaskWrapper, LoginTaskWrapper, Jso
         editor.commit();
 
         Intent i = new Intent(context, Themes.class);
+        if (context instanceof GrimoireActivity) {
+            ((GrimoireActivity) context).finish();
+        }
         context.startActivity(i);
 
     }
