@@ -56,3 +56,6 @@ DestinyGrimoire-Key
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# DestinyManifest Database
+app/src/main/assets/databases/destiny2_manifest_lore.db
