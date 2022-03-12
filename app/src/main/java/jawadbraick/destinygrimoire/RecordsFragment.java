@@ -67,7 +67,7 @@ public class RecordsFragment extends Fragment{
     }
 
     private List<RecordInfo> createRecordInfoList(){
-        final ArrayList<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(new RecordInfo[recordIds.length]));
+        final List<RecordInfo> recordInfoList = new ArrayList<>(Arrays.asList(new RecordInfo[recordIds.length]));
         Collections.synchronizedList(recordInfoList);
 
         ThreadGroup getRecordInfo = new ThreadGroup("getRecordInfo");
@@ -116,8 +116,14 @@ public class RecordsFragment extends Fragment{
             }
         }
 
+        // For some books, the first Record has no lore attached to it
         if (recordInfoList.get(0) == null) {
             recordInfoList.remove(0);
+        }
+
+        // Some Books have trailing Records that are classified (Lore not available yet)
+        while (recordInfoList.get(recordInfoList.size()-1) == null) {
+            recordInfoList.remove(recordInfoList.size()-1);
         }
 
         if(name.equals("Wall of Wishes")){
