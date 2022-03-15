@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void viewRecords(View view){
-        startActivity(new Intent(MainActivity.this, LoreRecordsActivity.class));
+        startActivity(new Intent(MainActivity.this, LoreHomeActivity.class));
     }
 
     //    Runnable to parse Grimoire Json. Parsed in initial activity to improve performace

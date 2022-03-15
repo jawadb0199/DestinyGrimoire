@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class LoreRecordsActivity extends AppCompatActivity{
+public class LoreHomeActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
-    private PresentationNodeAdapter presentationNodeAdapter;
+    private BooksAdapter booksAdapter;
     private ManifestDatabase database;
     private Thread getNodeChildrenThread;
     private ConcurrentHashMap<String, long[]> bookMap = new ConcurrentHashMap<>();
@@ -41,7 +41,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
         if(isDarkThemeEnabled){
             setTheme(R.style.ActivityTheme_Primary_Base_Dark);
         }
-        setContentView(R.layout.activity_lore_records);
+        setContentView(R.layout.activity_lore_home);
 
         SwitchCompat theme = (SwitchCompat) findViewById(R.id.themeSwitch);
         if(isDarkThemeEnabled){
@@ -75,7 +75,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
             }
 
             long[] nodes = bookMap.get(name);
-            final ArrayList<PresentationNodeInfo> presentationNodeInfoList = new ArrayList<>();
+            final ArrayList<BookInfo> bookInfoList = new ArrayList<>();
             final ArrayList<Long> nodeId = new ArrayList<>(1);
             nodeId.add(0L);
 
@@ -92,12 +92,12 @@ public class LoreRecordsActivity extends AppCompatActivity{
                                 return;
                             }
                             int bookImg = getImageResource(bookName);
-                            presentationNodeInfoList.add(new PresentationNodeInfo(bookImg, bookName, list.get(0).getId()));
+                            bookInfoList.add(new BookInfo(bookImg, bookName, list.get(0).getId()));
                         } catch (Exception e){
                             runOnUiThread(new Runnable(){
                                 @Override
                                 public void run(){
-                                    Toast.makeText(LoreRecordsActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoreHomeActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
                                 }
                             });
                         }
@@ -112,8 +112,8 @@ public class LoreRecordsActivity extends AppCompatActivity{
 
             }
 
-            presentationNodeAdapter = new PresentationNodeAdapter(this, presentationNodeInfoList, getFragmentManager());
-            recyclerView.setAdapter(presentationNodeAdapter);
+            booksAdapter = new BooksAdapter(this, bookInfoList, getFragmentManager());
+            recyclerView.setAdapter(booksAdapter);
 
         } catch (Exception e){
             Toast.makeText(this, "Error Loading Books", Toast.LENGTH_LONG).show();
@@ -164,7 +164,7 @@ public class LoreRecordsActivity extends AppCompatActivity{
                 runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
-                        Toast.makeText(LoreRecordsActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoreHomeActivity.this, "Error accessing database", Toast.LENGTH_LONG).show();
                     }
                 });
             }

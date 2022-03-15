@@ -1,6 +1,6 @@
 package jawadbraick.destinygrimoire;
 
-public class RecordInfo extends PresentationNodeInfo{
+public class RecordInfo extends BookInfo {
     private String recordName;
     private long loreId;
 

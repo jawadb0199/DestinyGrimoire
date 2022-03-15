@@ -17,18 +17,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNodeAdapter.PresentationNodeViewHolder>{
+public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHolder>{
     private LayoutInflater inflater;
-    List<PresentationNodeInfo> presentationNodeData;
+    List<BookInfo> bookData;
     private ManifestDatabase database;
     private ConcurrentHashMap<String, long[]> childIdMap;
     private ThreadGroup childIdThreads;
     private FragmentManager fm;
 
-    public PresentationNodeAdapter(Context context, List<PresentationNodeInfo> presentationNodeData, FragmentManager fm){
+    public BooksAdapter(Context context, List<BookInfo> bookData, FragmentManager fm){
         super();
         this.inflater = LayoutInflater.from(context);
-        this.presentationNodeData = presentationNodeData;
+        this.bookData = bookData;
         this.database = ManifestDatabase.getInstance(context);
         this.fm = fm;
         loadChildIdMap();
@@ -36,16 +36,16 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
 
 
     @Override
-    public PresentationNodeViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = inflater.inflate(R.layout.presentation_node_row, parent, false);
-        PresentationNodeViewHolder holder = new PresentationNodeViewHolder(view);
+        BookViewHolder holder = new BookViewHolder(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(PresentationNodeViewHolder holder, int position){
-        PresentationNodeInfo current = presentationNodeData.get(position);
+    public void onBindViewHolder(BookViewHolder holder, int position){
+        BookInfo current = bookData.get(position);
 
         holder.recordIcon.setImageResource(current.getIconId());
         holder.recordText.setText(current.getNodeName());
@@ -53,15 +53,15 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
 
     @Override
     public int getItemCount(){
-        return presentationNodeData.size();
+        return bookData.size();
     }
 
-    class PresentationNodeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView recordIcon;
         TextView recordText;
 
 
-        public PresentationNodeViewHolder(View itemView){
+        public BookViewHolder(View itemView){
             super(itemView);
             itemView.setOnClickListener(this);
             recordIcon = itemView.findViewById(R.id.recordIcon);
@@ -82,7 +82,7 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
             frag.setName(name);
             frag.setRecordIds(childIdMap.get(name));
             FragmentTransaction transaction = fm.beginTransaction();
-            transaction.add(R.id.loreRecordsActivity, frag, "RecordsFragment").addToBackStack(null).commit();
+            transaction.add(R.id.loreHomeActivity, frag, "RecordsFragment").addToBackStack(null).commit();
         }
     }
 
@@ -90,10 +90,10 @@ public class PresentationNodeAdapter extends RecyclerView.Adapter<PresentationNo
         childIdMap = new ConcurrentHashMap<>();
         childIdThreads = new ThreadGroup("childIdThreads");
 
-        for(int i = 0; i < presentationNodeData.size(); i++){
+        for(int i = 0; i < bookData.size(); i++){
 
-            final String name = presentationNodeData.get(i).getNodeName();
-            final long id = presentationNodeData.get(i).getNodeId();
+            final String name = bookData.get(i).getNodeName();
+            final long id = bookData.get(i).getNodeId();
 
             new Thread(childIdThreads, new Runnable(){
                 @Override

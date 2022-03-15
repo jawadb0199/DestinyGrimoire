@@ -65,7 +65,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
             LoreFragment frag = new LoreFragment();
             frag.setInfo(info);
             FragmentTransaction transaction = fm.beginTransaction();
-            transaction.add(R.id.loreRecordsActivity, frag, "LoreFragment").addToBackStack(null).commit();
+            transaction.add(R.id.loreHomeActivity, frag, "LoreFragment").addToBackStack(null).commit();
         }
     }
 }

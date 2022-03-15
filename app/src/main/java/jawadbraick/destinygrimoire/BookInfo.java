@@ -1,17 +1,17 @@
 package jawadbraick.destinygrimoire;
 
-public class PresentationNodeInfo{
+public class BookInfo {
     private int iconId;
     private String nodeName;
     private long nodeId;
 
 
-    public PresentationNodeInfo(int iconId, String nodeName){
+    public BookInfo(int iconId, String nodeName){
         this.iconId = iconId;
         this.nodeName = nodeName;
     }
 
-    public PresentationNodeInfo(int iconId, String nodeName, long nodeId){
+    public BookInfo(int iconId, String nodeName, long nodeId){
         this.iconId = iconId;
         this.nodeName = nodeName;
         this.nodeId = nodeId;
