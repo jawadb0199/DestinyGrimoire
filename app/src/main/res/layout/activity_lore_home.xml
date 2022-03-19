@@ -63,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="The Light"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/lightBorderAccent"/>
 
         </LinearLayout>
 
@@ -87,7 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dusk and Dawn"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/lightBorderAccent"/>
 
         </LinearLayout>
 
@@ -111,7 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="The Darkness"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/lightBorderAccent" />
 
         </LinearLayout>
 

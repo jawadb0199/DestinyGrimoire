@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity{
         startActivity(new Intent(MainActivity.this, LoreHomeActivity.class));
     }
 
+    public void viewItems(View view){
+        startActivity(new Intent(MainActivity.this, ItemsLoreActivity.class));
+    }
+
     //    Runnable to parse Grimoire Json. Parsed in initial activity to improve performace
     private class parseGrimoire implements Runnable{
 

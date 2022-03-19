@@ -26,8 +26,8 @@
             android:layout_marginBottom="40dp"
             android:text="Destiny Lore"
             android:textAlignment="center"
-            android:textColor="@color/lightText"
-            android:textSize="70dp" />
+            android:textColor="@color/lightBorderAccent"
+            android:textSize="50dp" />
 
 
 
@@ -36,6 +36,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/collectiblesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="23dp"
+                android:background="@color/darkBackground"
+                android:onClick="viewItems"
+                android:padding="10dp"
+                android:text="Destiny 2 Item Lore" />
 
             <Button
                 android:id="@+id/recordsButton"
@@ -61,8 +72,8 @@
 
         <ImageView
             android:id="@+id/iconView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
